@@ -1075,6 +1075,30 @@
             }
         }
 
+
+
+        /* Header decoration overlap fix
+           Separates the pink label from both the white subtitle pill and the blue note. */
+        @media (min-width: 901px) {
+            .hero-text {
+                padding-top: 34px;
+            }
+
+            .hero-text::before {
+                left: clamp(300px, 29vw, 430px);
+                right: auto;
+                top: -30px;
+                z-index: 2;
+                white-space: nowrap;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero-text::before {
+                display: none;
+            }
+        }
+
         @media print {
             body {
                 background: white;
