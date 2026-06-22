@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+
+<html lang="el">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ασφαλής Χρήση Ψηφιακών Τεχνολογιών &amp; e-Πολιτειότητα</title>
+<style>
+        :root {
+            --teal: #008080;
+            --teal-dark: #005f5f;
+            --light-teal: #e6f2f2;
+            --orange: #F26419;
+            --orange-dark: #cf4d0d;
+            --light-orange: #fdf0ea;
+            --paper: #fffaf2;
+            --cream: #f7f1e7;
+            --yellow: #ffd166;
+            --pink: #ef476f;
+            --blue-note: #dff3ff;
+            --text-dark: #273033;
+            --text-muted: #5f6b70;
+            --bg-light: #ffffff;
+            --gray-border: #dddddd;
+            --shadow-soft: 0 18px 45px rgba(18, 38, 43, 0.10);
+            --shadow-paper: 9px 9px 0 rgba(0, 128, 128, 0.12);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.65;
+            color: var(--text-dark);
+            background:
+                radial-gradient(circle at 5% 5%, rgba(0, 128, 128, 0.14), transparent 30%),
+                radial-gradient(circle at 90% 12%, rgba(242, 100, 25, 0.13), transparent 30%),
+                radial-gradient(circle at 50% 100%, rgba(255, 209, 102, 0.20), transparent 35%),
+                var(--cream);
+            margin: 0;
+            padding: clamp(16px, 3vw, 42px);
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.32;
+            background-image:
+                linear-gradient(rgba(0,0,0,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,.035) 1px, transparent 1px);
+            background-size: 34px 34px;
+            z-index: -1;
+        }
+
+        .page-shell {
+            width: min(1160px, 100%);
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-lg);
+            padding: clamp(18px, 4vw, 48px);
+            box-shadow: 0 30px 90px rgba(28, 44, 48, 0.16);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-shell::before,
+        .page-shell::after {
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            border-radius: 999px;
+            opacity: .45;
+            filter: blur(.2px);
+        }
+
+        .page-shell::before {
+            width: 260px;
+            height: 260px;
+            background: rgba(0, 128, 128, .08);
+            left: -120px;
+            top: 220px;
+        }
+
+        .page-shell::after {
+            width: 220px;
+            height: 220px;
+            background: rgba(242, 100, 25, .08);
+            right: -90px;
+            bottom: 120px;
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 28px;
+            align-items: center;
+            margin-bottom: clamp(32px, 5vw, 56px);
+            padding: clamp(26px, 5vw, 56px);
+            border-radius: 34px;
+            background:
+                linear-gradient(135deg, rgba(230, 242, 242, .96), rgba(255, 250, 242, .98) 52%, rgba(253, 240, 234, .96)),
+                var(--paper);
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-paper), var(--shadow-soft);
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            content: "DIGITAL CITIZENSHIP";
+            position: absolute;
+            top: 18px;
+            left: clamp(20px, 4vw, 42px);
+            z-index: 2;
+            background: var(--yellow);
+            color: #2f2a1c;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: .72rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            transform: rotate(-2.5deg);
+            box-shadow: 0 6px 0 rgba(0,0,0,.05);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -52px;
+            bottom: -72px;
+            width: 230px;
+            height: 230px;
+            background: var(--orange);
+            opacity: .12;
+            border-radius: 42% 58% 65% 35%;
+            transform: rotate(16deg);
+            z-index: -1;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: var(--teal-dark);
+            font-weight: 800;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            font-size: .82rem;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--teal);
+            line-height: 1.16;
+        }
+
+        h1 {
+            margin: 0;
+            max-width: 840px;
+            color: var(--teal-dark);
+            font-size: clamp(2rem, 5vw, 4.4rem);
+            letter-spacing: -0.055em;
+            text-align: left;
+        }
+
+        .hero-subtitle {
+            max-width: 720px;
+            margin: 20px 0 0;
+            color: var(--text-muted);
+            font-size: clamp(1rem, 1.7vw, 1.22rem);
+            font-weight: 600;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .hero-tags span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 34px;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: #fff;
+            color: var(--teal-dark);
+            border: 1px solid rgba(0, 128, 128, .18);
+            box-shadow: 0 6px 15px rgba(0,0,0,.06);
+            font-weight: 800;
+            font-size: .88rem;
+        }
+
+        .page-logo {
+            position: relative;
+            z-index: 4;
+            width: clamp(69px, 9.6vw, 101px);
+            height: clamp(69px, 9.6vw, 101px);
+            border-radius: 50%;
+            border: 4px solid #fff;
+            outline: 3px solid var(--teal);
+            box-shadow: 0 16px 35px rgba(0,0,0,0.16);
+            object-fit: contain;
+            background-color: white;
+            transform: rotate(2deg);
+        }
+
+        .paper-scrap {
+            position: absolute;
+            z-index: 1;
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: .76rem;
+            font-weight: 900;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: rgba(39, 48, 51, .82);
+            box-shadow: 0 8px 0 rgba(0,0,0,.045);
+            user-select: none;
+        }
+
+        .scrap-a {
+            right: 176px;
+            top: 34px;
+            background: var(--blue-note);
+            transform: rotate(6deg);
+        }
+
+        .scrap-b {
+            right: 42px;
+            bottom: 34px;
+            background: #ffe9a8;
+            transform: rotate(-6deg);
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 46px;
+        }
+
+        section > h2 {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 22px;
+            color: var(--teal-dark);
+            font-size: clamp(1.55rem, 2.6vw, 2.2rem);
+            letter-spacing: -0.025em;
+        }
+
+        section > h2::before {
+            content: "";
+            width: 18px;
+            height: 42px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--orange), var(--teal));
+            box-shadow: 5px 5px 0 rgba(0,128,128,.12);
+        }
+
+        p, li {
+            color: var(--text-dark);
+            text-align: justify;
+            text-justify: inter-word;
+            hyphens: auto;
+        }
+
+        p {
+            max-width: 86ch;
+        }
+
+        ul {
+            max-width: 88ch;
+            padding-left: 1.35rem;
+        }
+
+        li + li {
+            margin-top: 7px;
+        }
+
+        .intro-section {
+            margin-bottom: 48px;
+        }
+
+        details {
+            position: relative;
+            background: rgba(255,255,255,.95);
+            border: 1px solid rgba(0, 128, 128, 0.16);
+            border-left: 8px solid var(--teal);
+            margin-bottom: 18px;
+            padding: 0;
+            border-radius: var(--radius-md);
+            box-shadow: 0 14px 34px rgba(25, 44, 49, .08);
+            overflow: hidden;
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+        }
+
+        details:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 42px rgba(25, 44, 49, .12);
+        }
+
+        details[open] {
+            border-left-color: var(--orange);
+            background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(253,240,234,.55));
+        }
+
+        details > *:not(summary) {
+            margin-left: 22px;
+            margin-right: 22px;
+        }
+
+        details > *:last-child {
+            margin-bottom: 22px;
+        }
+
+        summary {
+            display: flex;
+            align-items: center;
+            min-height: 64px;
+            gap: 10px;
+            font-weight: 850;
+            font-size: clamp(1rem, 1.6vw, 1.18rem);
+            color: var(--teal-dark);
+            cursor: pointer;
+            padding: 18px 22px;
+            list-style: none;
+            border-bottom: 1px dashed rgba(0, 128, 128, 0.18);
+            background:
+                linear-gradient(90deg, rgba(230,242,242,.78), transparent 55%),
+                rgba(255,255,255,.54);
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::before {
+            content: "▶";
+            color: white;
+            background: var(--orange);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-grid;
+            place-items: center;
+            margin-right: 4px;
+            transition: transform 0.2s ease-in-out;
+            font-size: 0.74em;
+            flex: 0 0 auto;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+            background: var(--teal);
+        }
+
+        details h4,
+        .content-block h4 {
+            width: fit-content;
+            max-width: 100%;
+            margin-top: 26px;
+            margin-bottom: 10px;
+            padding: 6px 10px;
+            color: var(--teal-dark);
+            background: rgba(230, 242, 242, .8);
+            border-radius: 8px;
+            box-shadow: 4px 4px 0 rgba(0,128,128,.10);
+        }
+
+        .tabs-container {
+            border: 2px solid rgba(0, 0, 0, 0.06);
+            border-radius: 28px;
+            overflow: hidden;
+            background: rgba(255,255,255,.96);
+            box-shadow: var(--shadow-soft), 10px 10px 0 rgba(242, 100, 25, .10);
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            background:
+                linear-gradient(135deg, rgba(230,242,242,.96), rgba(255,250,242,.96));
+            border-bottom: 1px solid rgba(0,0,0,.08);
+            padding: 12px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .tab-button {
+            flex: 1 0 170px;
+            background-color: white;
+            border: 1px solid rgba(0,128,128,.18);
+            outline: none;
+            cursor: pointer;
+            padding: 13px 20px;
+            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+            font-size: 1.05em;
+            font-weight: 900;
+            color: var(--teal-dark);
+            border-radius: 999px;
+            box-shadow: 0 8px 16px rgba(0,0,0,.055);
+            white-space: nowrap;
+        }
+
+        .tab-button:hover {
+            transform: translateY(-2px) rotate(-.5deg);
+            background-color: var(--light-orange);
+            color: var(--orange-dark);
+            box-shadow: 0 12px 24px rgba(242,100,25,.14);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--orange), #ff8a4a);
+            color: white;
+            border-color: rgba(242,100,25,.35);
+            box-shadow: 0 14px 24px rgba(242,100,25,.22);
+        }
+
+        .tab-content {
+            display: none;
+            padding: clamp(20px, 4vw, 42px);
+            animation: fadeEffect 0.5s;
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0; transform: translateY(6px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .content-block {
+            margin-bottom: 25px;
+        }
+
+        .content-block h3 {
+            width: fit-content;
+            max-width: 100%;
+            margin-top: 0;
+            margin-bottom: 18px;
+            color: var(--orange-dark);
+            font-size: clamp(1.35rem, 2.4vw, 2rem);
+            background: #fff;
+            border: 2px solid rgba(242,100,25,.15);
+            border-radius: 16px;
+            padding: 10px 16px;
+            box-shadow: 7px 7px 0 rgba(242,100,25,.12);
+            transform: rotate(-.5deg);
+        }
+
+        .scenario-card {
+            position: relative;
+            background: #ffffff;
+            border: 2px solid rgba(0,0,0,.07);
+            border-radius: 22px;
+            padding: 24px 20px 20px;
+            margin: 24px 0;
+            box-shadow: 8px 8px 0 rgba(242,100,25,.16), 0 14px 28px rgba(0,0,0,.08);
+            transform-origin: center;
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .scenario-card:nth-of-type(odd) {
+            transform: rotate(-0.55deg);
+        }
+
+        .scenario-card:nth-of-type(even) {
+            transform: rotate(0.45deg);
+        }
+
+        .scenario-card::before {
+            content: "scenario";
+            position: absolute;
+            top: -14px;
+            left: 18px;
+            background: var(--yellow);
+            color: #3d3320;
+            padding: 5px 11px;
+            border-radius: 999px;
+            font-size: .72rem;
+            font-weight: 950;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            box-shadow: 0 5px 0 rgba(0,0,0,.05);
+            transform: rotate(-3deg);
+        }
+
+        .scenario-card strong {
+            display: inline-block;
+            margin-bottom: 7px;
+            color: var(--orange-dark);
+            font-size: 1.08rem;
+        }
+
+        .scenario-card em {
+            color: var(--teal-dark);
+            font-weight: 800;
+        }
+
+        .img-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            color: white;
+            padding: 10px 15px;
+            margin-top: 12px;
+            margin-right: 6px;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 0.92em;
+            font-weight: 900;
+            letter-spacing: .01em;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+            box-shadow: 0 9px 18px rgba(0,128,128,.22);
+        }
+
+        .img-button:hover {
+            background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+            transform: translateY(-2px);
+            box-shadow: 0 13px 24px rgba(242,100,25,.24);
+        }
+
+        .img-button:active,
+        .tab-button:active {
+            transform: translateY(0);
+        }
+
+        summary:focus-visible,
+        .tab-button:focus-visible,
+        .img-button:focus-visible,
+        .close:focus-visible {
+            outline: 3px solid rgba(242, 100, 25, .45);
+            outline-offset: 3px;
+        }
+
+
+        .resource-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin: 12px 0 22px;
+            max-width: 86ch;
+        }
+
+        .resource-buttons .img-button {
+            margin: 0;
+        }
+
+        .resource-buttons::before {
+            content: "";
+            width: 26px;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--orange), var(--teal));
+            flex: 0 0 auto;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            padding: 46px 18px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(10, 18, 20, 0.88);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: min(94%, 1200px);
+            max-height: 84vh;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 28px 80px rgba(0,0,0,0.55);
+            border: 8px solid white;
+        }
+
+        .close {
+            position: fixed;
+            top: 18px;
+            right: 28px;
+            color: #ffffff;
+            font-size: 44px;
+            line-height: 1;
+            font-weight: 900;
+            transition: color 0.25s ease, transform .25s ease;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--orange);
+            text-decoration: none;
+            transform: rotate(6deg) scale(1.04);
+            cursor: pointer;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            margin-top: 46px;
+            padding: 24px 18px 4px;
+            border-top: 1px dashed rgba(0,128,128,.25);
+            color: var(--teal-dark);
+            font-size: 0.95em;
+            font-weight: 850;
+        }
+
+
+
+        /* =========================================================
+           BOLDER EDITORIAL COLLAGE VARIANT
+           Stronger paper layers, tape labels, cutout shadows,
+           and language-specific scenario labels.
+        ========================================================= */
+
+        body {
+            background:
+                radial-gradient(circle at 4% 9%, rgba(239, 71, 111, 0.22), transparent 24%),
+                radial-gradient(circle at 92% 8%, rgba(255, 209, 102, 0.38), transparent 25%),
+                radial-gradient(circle at 18% 90%, rgba(0, 128, 128, 0.22), transparent 28%),
+                linear-gradient(135deg, #f4eadb 0%, #fff6e6 45%, #edf7f7 100%);
+        }
+
+        body::before {
+            opacity: 0.46;
+            background-image:
+                linear-gradient(rgba(39,48,51,.055) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(39,48,51,.055) 1.5px, transparent 1.5px),
+                radial-gradient(circle, rgba(39,48,51,.10) 1px, transparent 1.2px);
+            background-size: 30px 30px, 30px 30px, 22px 22px;
+        }
+
+        .page-shell {
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.97), rgba(255,250,242,.96)),
+                repeating-linear-gradient(-3deg, rgba(0,0,0,.022) 0 1px, transparent 1px 12px);
+            border: 3px solid rgba(39, 48, 51, .11);
+            box-shadow:
+                18px 18px 0 rgba(239, 71, 111, .16),
+                -14px 14px 0 rgba(0, 128, 128, .16),
+                0 36px 100px rgba(28, 44, 48, 0.22);
+        }
+
+        .page-shell::before {
+            width: 320px;
+            height: 320px;
+            left: -140px;
+            top: 170px;
+            opacity: .78;
+            background:
+                repeating-linear-gradient(45deg, rgba(0,128,128,.16) 0 10px, rgba(0,128,128,.06) 10px 20px);
+            border-radius: 34% 66% 51% 49%;
+            transform: rotate(-12deg);
+        }
+
+        .page-shell::after {
+            width: 290px;
+            height: 290px;
+            right: -125px;
+            bottom: 80px;
+            opacity: .74;
+            background:
+                repeating-linear-gradient(-35deg, rgba(242,100,25,.15) 0 12px, rgba(255,209,102,.22) 12px 24px);
+            border-radius: 62% 38% 48% 52%;
+            transform: rotate(15deg);
+        }
+
+        .hero {
+            background:
+                linear-gradient(130deg, rgba(230,242,242,.97) 0 34%, rgba(255,209,102,.44) 34% 51%, rgba(255,250,242,.98) 51% 72%, rgba(253,240,234,.98) 72% 100%),
+                var(--paper);
+            border: 3px solid rgba(39,48,51,.12);
+            box-shadow:
+                16px 16px 0 rgba(255, 209, 102, .55),
+                -10px 10px 0 rgba(0, 128, 128, .18),
+                0 24px 60px rgba(0,0,0,.16);
+        }
+
+        .hero::before {
+            top: 20px;
+            left: clamp(18px, 4vw, 38px);
+            background: #ffd166;
+            color: #2f2a1c;
+            border: 2px solid rgba(47,42,28,.14);
+            border-radius: 3px;
+            box-shadow: 6px 6px 0 rgba(239,71,111,.22);
+            transform: rotate(-5deg);
+        }
+
+        .hero::after {
+            right: -42px;
+            bottom: -86px;
+            width: 300px;
+            height: 300px;
+            opacity: .24;
+            background:
+                linear-gradient(45deg, var(--orange) 0 50%, var(--pink) 50% 100%);
+            border-radius: 30% 70% 60% 40%;
+            transform: rotate(24deg);
+        }
+
+        .hero-text::before {
+            content: "safe • smart • critical";
+            position: absolute;
+            right: min(4vw, 42px);
+            top: -18px;
+            z-index: -1;
+            background: rgba(239, 71, 111, .88);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: .76rem;
+            font-weight: 950;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            transform: rotate(7deg);
+            box-shadow: 6px 6px 0 rgba(0,0,0,.08);
+        }
+
+        h1 {
+            text-shadow: 3px 3px 0 rgba(255,209,102,.55);
+        }
+
+        .hero-kicker {
+            background: #fff;
+            border: 2px solid rgba(0,128,128,.18);
+            border-radius: 999px;
+            padding: 8px 13px;
+            box-shadow: 6px 6px 0 rgba(0,128,128,.12);
+            transform: rotate(-1deg);
+        }
+
+        .hero-subtitle {
+            background: rgba(255,255,255,.72);
+            border-left: 7px solid var(--orange);
+            padding: 14px 18px;
+            border-radius: 0 18px 18px 0;
+            box-shadow: 8px 8px 0 rgba(242,100,25,.11);
+        }
+
+        .hero-tags span {
+            border: 2px solid rgba(39,48,51,.08);
+            box-shadow: 5px 5px 0 rgba(0,0,0,.06);
+        }
+
+        .hero-tags span:nth-child(2) {
+            background: #fff0f5;
+            transform: rotate(1.6deg);
+        }
+
+        .hero-tags span:nth-child(3) {
+            background: #fff7cf;
+            transform: rotate(-1.4deg);
+        }
+
+        .hero-tags span:nth-child(4) {
+            background: #dff3ff;
+            transform: rotate(1deg);
+        }
+
+        .page-logo {
+            border: 6px solid #fff;
+            outline: 4px solid var(--teal-dark);
+            box-shadow:
+                8px 8px 0 rgba(255,209,102,.7),
+                0 18px 38px rgba(0,0,0,.22);
+            transform: rotate(5deg);
+        }
+
+        .paper-scrap {
+            border: 2px solid rgba(39,48,51,.10);
+            border-radius: 4px;
+            box-shadow: 7px 7px 0 rgba(0,0,0,.08);
+        }
+
+        .scrap-a {
+            background: #dff3ff;
+            transform: rotate(10deg);
+        }
+
+        .scrap-b {
+            background: #ffd166;
+            transform: rotate(-9deg);
+        }
+
+        section > h2 {
+            width: fit-content;
+            background: #ffffff;
+            border: 2px solid rgba(39,48,51,.09);
+            border-radius: 18px;
+            padding: 10px 16px 10px 12px;
+            box-shadow: 8px 8px 0 rgba(0,128,128,.13);
+            transform: rotate(-.65deg);
+        }
+
+        section > h2::before {
+            width: 22px;
+            height: 48px;
+            border-radius: 5px;
+            background: linear-gradient(180deg, var(--pink), var(--orange), var(--teal));
+            box-shadow: 5px 5px 0 rgba(239,71,111,.14);
+        }
+
+        details {
+            border: 2px solid rgba(39,48,51,.09);
+            border-left: 12px solid var(--teal);
+            border-radius: 22px;
+            box-shadow:
+                9px 9px 0 rgba(0,128,128,.09),
+                0 18px 36px rgba(25, 44, 49, .10);
+        }
+
+        details:nth-of-type(2n) {
+            transform: rotate(.25deg);
+            border-left-color: var(--orange);
+            box-shadow:
+                9px 9px 0 rgba(242,100,25,.10),
+                0 18px 36px rgba(25, 44, 49, .10);
+        }
+
+        details:nth-of-type(2n+1) {
+            transform: rotate(-.18deg);
+        }
+
+        details:hover,
+        details:nth-of-type(2n):hover,
+        details:nth-of-type(2n+1):hover {
+            transform: translateY(-3px) rotate(0deg);
+        }
+
+        summary {
+            background:
+                linear-gradient(90deg, rgba(255,209,102,.38), rgba(230,242,242,.86) 52%, rgba(255,255,255,.78));
+            border-bottom: 2px dashed rgba(39,48,51,.12);
+        }
+
+        details h4,
+        .content-block h4 {
+            background: #dff3ff;
+            border: 1px solid rgba(0,128,128,.12);
+            border-radius: 5px;
+            box-shadow: 6px 6px 0 rgba(0,128,128,.11);
+            transform: rotate(-.55deg);
+        }
+
+        .tabs-container {
+            border: 3px solid rgba(39,48,51,.10);
+            box-shadow:
+                14px 14px 0 rgba(242,100,25,.16),
+                -9px 9px 0 rgba(0,128,128,.13),
+                0 24px 58px rgba(0,0,0,.14);
+        }
+
+        .tab-buttons {
+            background:
+                linear-gradient(135deg, rgba(255,209,102,.45), rgba(230,242,242,.98) 48%, rgba(253,240,234,.96));
+            border-bottom: 2px dashed rgba(39,48,51,.12);
+        }
+
+        .tab-button {
+            border: 2px solid rgba(39,48,51,.08);
+            box-shadow: 6px 6px 0 rgba(0,0,0,.06);
+        }
+
+        .tab-button:nth-child(1) { transform: rotate(-1.1deg); }
+        .tab-button:nth-child(2) { transform: rotate(.8deg); }
+        .tab-button:nth-child(3) { transform: rotate(-.6deg); }
+
+        .tab-button:hover,
+        .tab-button.active {
+            transform: translateY(-3px) rotate(0deg);
+        }
+
+        .content-block h3 {
+            background: #fff7cf;
+            border: 2px solid rgba(242,100,25,.18);
+            border-radius: 8px;
+            box-shadow:
+                8px 8px 0 rgba(242,100,25,.18),
+                -4px 4px 0 rgba(255,209,102,.55);
+            transform: rotate(-1.2deg);
+        }
+
+        .scenario-card {
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,250,242,.94));
+            border: 3px solid rgba(39,48,51,.10);
+            border-radius: 10px 24px 18px 28px;
+            padding: 34px 24px 22px;
+            margin: 30px 0;
+            box-shadow:
+                12px 12px 0 rgba(242,100,25,.18),
+                -6px 6px 0 rgba(0,128,128,.10),
+                0 18px 34px rgba(0,0,0,.11);
+        }
+
+        .scenario-card:nth-of-type(odd) {
+            transform: rotate(-1.25deg);
+        }
+
+        .scenario-card:nth-of-type(even) {
+            transform: rotate(1.05deg);
+        }
+
+        .scenario-card::before {
+            content: "Scenario";
+            top: -18px;
+            left: 20px;
+            background: var(--yellow);
+            border: 2px solid rgba(47,42,28,.12);
+            border-radius: 3px;
+            color: #302812;
+            padding: 7px 13px;
+            font-size: .78rem;
+            letter-spacing: .04em;
+            text-transform: none;
+            box-shadow: 6px 6px 0 rgba(239,71,111,.18);
+            transform: rotate(-6deg);
+        }
+
+        .scenario-card::after {
+            content: "";
+            position: absolute;
+            top: -15px;
+            right: 28px;
+            width: 74px;
+            height: 22px;
+            background: rgba(223, 243, 255, .82);
+            border: 1px solid rgba(0,128,128,.12);
+            transform: rotate(7deg);
+            box-shadow: 3px 3px 0 rgba(0,0,0,.04);
+        }
+
+        #English .scenario-card::before {
+            content: "Scenario";
+        }
+
+        #German .scenario-card::before {
+            content: "Szenario";
+        }
+
+        #French .scenario-card::before {
+            content: "Scénario";
+        }
+
+        .scenario-card strong {
+            color: var(--orange-dark);
+            background: rgba(255,209,102,.38);
+            padding: 3px 7px;
+            border-radius: 6px;
+        }
+
+        .resource-buttons {
+            position: relative;
+            margin: 16px 0 26px;
+            padding: 10px 12px;
+            background: rgba(255,255,255,.60);
+            border: 2px dashed rgba(0,128,128,.20);
+            border-radius: 14px;
+            box-shadow: 6px 6px 0 rgba(0,128,128,.08);
+        }
+
+        .resource-buttons::before {
+            width: 34px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--pink), var(--orange), var(--teal));
+        }
+
+        .img-button {
+            border: 2px solid rgba(255,255,255,.50);
+            box-shadow:
+                6px 6px 0 rgba(0,128,128,.18),
+                0 10px 18px rgba(0,128,128,.18);
+        }
+
+        .img-button:hover {
+            box-shadow:
+                6px 6px 0 rgba(242,100,25,.22),
+                0 14px 24px rgba(242,100,25,.25);
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .page-logo {
+                justify-self: start;
+                order: -1;
+            }
+
+            .scrap-a,
+            .scrap-b {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .page-shell {
+                border-radius: 22px;
+                padding: 16px;
+            }
+
+            .hero {
+                padding: 54px 20px 24px;
+                border-radius: 24px;
+            }
+
+            .page-logo {
+                width: 70px;
+                height: 70px;
+            }
+
+            .hero-tags span {
+                font-size: .82rem;
+            }
+
+            details > *:not(summary) {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+
+            .tab-button {
+                flex-basis: auto;
+                min-width: 132px;
+                font-size: .98em;
+            }
+
+            .scenario-card:nth-of-type(odd),
+            .scenario-card:nth-of-type(even),
+            .tab-button:nth-child(1),
+            .tab-button:nth-child(2),
+            .tab-button:nth-child(3),
+            section > h2,
+            details:nth-of-type(2n),
+            details:nth-of-type(2n+1) {
+                transform: none;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            body::before,
+            .paper-scrap,
+            .hero::before,
+            .hero::after,
+            .page-shell::before,
+            .page-shell::after {
+                display: none;
+            }
+
+            .page-shell,
+            .hero,
+            details,
+            .tabs-container,
+            .scenario-card {
+                box-shadow: none;
+            }
+
+            .tab-content {
+                display: block !important;
+            }
+
+            .tab-buttons,
+            .img-button,
+            .modal {
+                display: none !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-shell">
+<header aria-label="Εισαγωγή στην ψηφιακή πολιτειότητα" class="hero">
+<div class="hero-text">
+<span class="hero-kicker">Online Safety • Digital Citizenship • AI Literacy</span>
+<h1>Ασφαλής Χρήση των Ψηφιακών Τεχνολογιών &amp; e-Πολιτειότητα</h1>
+<p class="hero-subtitle">Θεωρητικό πλαίσιο και διδακτικές παρεμβάσεις για τη δημιουργική, κριτική και υπεύθυνη χρήση του διαδικτύου στο μάθημα της ξένης γλώσσας.</p>
+<div aria-label="Βασικές θεματικές" class="hero-tags">
+<span>Ιδιωτικότητα</span>
+<span>Fake news</span>
+<span>Κυβερνοεκφοβισμός</span>
+<span>Υπεύθυνη ΤΝ</span>
+</div>
+</div>
+<img alt="Λογότυπο" class="page-logo" src="logo_GR.png"/>
+<span aria-hidden="true" class="paper-scrap scrap-a">safe online</span>
+<span aria-hidden="true" class="paper-scrap scrap-b">think before you post</span>
+</header>
+<!-- ΕΙΣΑΓΩΓΗ ΜΕ COLLAPSIBLES -->
+<section class="intro-section">
+<h2>Θεωρητικό Πλαίσιο</h2>
+<details>
+<summary>Ασφαλής χρήση των ψηφιακών τεχνολογιών και e-Πολιτειότητα</summary>
+<p>Η καθολική διάδοση του Διαδικτύου και των ψηφιακών τεχνολογιών έχει δημιουργήσει νέες δυνατότητες επικοινωνίας, μάθησης, πληροφόρησης και συμμετοχής. Ταυτόχρονα, όμως, έχει φέρει στην επιφάνεια μια σειρά από αρνητικά φαινόμενα, τα οποία συχνά περιγράφονται γενικά ως «κίνδυνοι στο Διαδίκτυο». Ο όρος αυτός χρειάζεται προσεκτική χρήση, επειδή δεν αποτελεί κάθε ενοχλητικό ή ανεπιθύμητο φαινόμενο άμεσο κίνδυνο. Για παράδειγμα, τα ανεπιθύμητα μηνύματα μπορεί να προκαλούν απώλεια χρόνου, ενόχληση ή υπερφόρτωση του ηλεκτρονικού ταχυδρομείου, χωρίς πάντοτε να συνιστούν σοβαρή απειλή.</p>
+<p>Η έννοια του κινδύνου δεν είναι απόλυτη ούτε σταθερή. Διαμορφώνεται κοινωνικά, πολιτισμικά και ιστορικά. Κάτι που σε μια εποχή ή κοινωνία θεωρείται επικίνδυνο μπορεί σε άλλη να θεωρείται αποδεκτό ή ακόμη και χρήσιμο. Ο τρόπος με τον οποίο αξιολογείται ένας κίνδυνος επηρεάζεται από την ηλικία, τις αξίες, την κουλτούρα, την κοινωνική εμπειρία και το πλαίσιο μέσα στο οποίο χρησιμοποιείται μια τεχνολογία. Για τον λόγο αυτό, οι εκπαιδευτικοί και οι γονείς χρειάζεται να υιοθετούν κριτική στάση απέναντι σε γενικευμένους χαρακτηρισμούς και να αποφεύγουν την εύκολη δαιμονοποίηση του Διαδικτύου.</p>
+<p>Ιδιαίτερη σημασία έχει η συμπεριφορά των εφήβων απέναντι στο ρίσκο. Οι έφηβοι συχνά δοκιμάζουν όρια, έλκονται από το απαγορευμένο και αγνοούν τις προειδοποιήσεις των ενηλίκων. Αυτή η στάση συνδέεται με τη διαμόρφωση της προσωπικότητας και της ταυτότητάς τους. Επομένως, η απλή απαγόρευση σπάνια αρκεί. Αντίθετα, χρειάζεται συστηματική διαπαιδαγώγηση, διάλογος, ενημέρωση και σταδιακή καλλιέργεια υπεύθυνης ψηφιακής συμπεριφοράς.</p>
+</details>
+<details>
+<summary>Διαδικτυακοί κίνδυνοι και μορφές βλάβης</summary>
+<p>Διαδικτυακός κίνδυνος μπορεί να θεωρηθεί κάθε στοιχείο ή πρακτική που μπορεί να προκαλέσει βλάβη στον χρήστη. Η βλάβη αυτή μπορεί να είναι σωματική, συναισθηματική, ψυχολογική, οικονομική, κοινωνική ή να αφορά τη φήμη και την υπόληψη του ατόμου. Η ασφάλεια, αντίστοιχα, συνδέεται με την προστασία της ζωής, της ακεραιότητας, της ιδιωτικότητας και της αξιοπρέπειας του χρήστη.</p>
+<p>Οι κίνδυνοι και τα ανεπιθύμητα φαινόμενα του ψηφιακού περιβάλλοντος μπορούν να λάβουν πολλές μορφές. Ανάμεσά τους περιλαμβάνονται το ακατάλληλο ή προσβλητικό περιεχόμενο, τα ανεπιθύμητα μηνύματα, η κοινωνική αποξένωση, η διαδικτυακή αποπλάνηση, τα βίαια παιχνίδια, ο διαδικτυακός εθισμός, ο κυβερνοεκφοβισμός, η παρώθηση σε επιβλαβείς συμπεριφορές, ο ηλεκτρονικός τζόγος, το κακόβουλο λογισμικό, η παραβίαση της ιδιωτικότητας, η παραπληροφόρηση, το phishing, το pharming και οι σωματικές παθήσεις που μπορεί να προκληθούν από την παρατεταμένη χρήση ηλεκτρονικών συσκευών.</p>
+<h4>Ακατάλληλο, προσβλητικό και επιβλαβές περιεχόμενο</h4>
+<p>Το ακατάλληλο ή προσβλητικό περιεχόμενο περιλαμβάνει λεκτικό, οπτικό ή ακουστικό υλικό που παραβιάζει κοινωνικά, πολιτισμικά, θρησκευτικά ή οικογενειακά πρότυπα. Η ακαταλληλότητα, όμως, δεν είναι ίδια για όλους τους χρήστες. Εξαρτάται από την ηλικία, την ψυχική ωριμότητα, το πολιτισμικό περιβάλλον και την ικανότητα κριτικής επεξεργασίας του περιεχομένου. Τα παιδιά και οι έφηβοι είναι πιο ευάλωτοι, επειδή δεν διαθέτουν πάντα τα γνωστικά και ψυχικά εφόδια για να ερμηνεύσουν, να αξιολογήσουν ή να απορρίψουν επιβλαβή μηνύματα. Μπορεί να εκτεθούν σε περιεχόμενο ρατσιστικό, βίαιο, σεξουαλικά προκλητικό, ξενοφοβικό, παράνομο ή ιδεολογικά ακραίο. Μπορεί επίσης να συναντήσουν υλικό που προωθεί τη βία, τα ναρκωτικά, τον τζόγο, τις διατροφικές διαταραχές ή άλλες επικίνδυνες συμπεριφορές. Ένα σημαντικό στοιχείο είναι ότι τα μηνύματα των ψηφιακών πόρων δεν είναι πάντα άμεσα και φανερά. Μπορούν να μεταφέρονται έμμεσα μέσα από εικόνες, χρώματα, μεγέθη, γραμματοσειρές, διάταξη και γενικότερη αισθητική. Για παράδειγμα, μια ιστοσελίδα μπορεί να προβάλλει έμμεσα συγκεκριμένα πρότυπα σώματος, δύναμης, επιτυχίας ή κοινωνικής αποδοχής χωρίς να τα δηλώνει ρητά. Η κριτική ανάγνωση του ψηφιακού περιεχομένου είναι, επομένως, απαραίτητη.</p>
+<h4>Ανεπιθύμητα μηνύματα και διαδικτυακή εξαπάτηση</h4>
+<p>Τα ανεπιθύμητα μηνύματα, γνωστά ως spam, αποτελούν ένα από τα πιο συνηθισμένα φαινόμενα στον κυβερνοχώρο. Εμφανίζονται κυρίως στο ηλεκτρονικό ταχυδρομείο και στα κινητά τηλέφωνα και συχνά σχετίζονται με διαφημίσεις προϊόντων ή υπηρεσιών, τυχερά παιχνίδια, ψευδείς προσφορές, πορνογραφικό υλικό ή απόπειρες οικονομικής εξαπάτησης. Ορισμένα spam μηνύματα επιχειρούν να παραπλανήσουν τον χρήστη μέσω ψεύτικων ιστοριών, όπως υποτιθέμενες κληρονομιές, αδιάθετα χρηματικά ποσά ή ανύπαρκτα κέρδη. Άλλα προσποιούνται ότι προέρχονται από τράπεζες, δημόσιους φορείς ή γνωστές εταιρείες και ζητούν από τον χρήστη να πατήσει σε κάποιον σύνδεσμο ή να δώσει προσωπικά στοιχεία. Συχνά τέτοια μηνύματα περιέχουν γλωσσικά ή επικοινωνιακά λάθη, επειδή έχουν μεταφραστεί αυτόματα ή έχουν συνταχθεί πρόχειρα. Η προστασία από τέτοιες πρακτικές απαιτεί προσοχή. Ο χρήστης δεν πρέπει να πατά σε ύποπτους συνδέσμους, να απαντά σε μηνύματα που ζητούν προσωπικά στοιχεία ή να εμπιστεύεται μηνύματα που δημιουργούν αίσθηση επείγοντος. Ιδιαίτερα στις τραπεζικές συναλλαγές, είναι ασφαλέστερο να πληκτρολογείται απευθείας η επίσημη διεύθυνση της τράπεζας και όχι να χρησιμοποιούνται σύνδεσμοι που έχουν σταλεί μέσω email. Το spam έχει και περιβαλλοντική διάσταση. Η μαζική παραγωγή, αποστολή και αποθήκευση ανεπιθύμητων μηνυμάτων καταναλώνει ενέργεια και επιβαρύνει τις ψηφιακές υποδομές.</p>
+<h4>Κοινωνική αποξένωση</h4>
+<p>Η κοινωνική αποξένωση συνδέεται με την υπερβολική ενασχόληση με διαδικτυακές δραστηριότητες, όπως τα ψηφιακά παιχνίδια, οι συνομιλίες σε chat rooms, τα κοινωνικά δίκτυα και οι online κοινότητες. Όταν ο χρόνος που αφιερώνεται σε αυτές τις δραστηριότητες αυξάνεται υπερβολικά, μπορεί να μειωθεί η επαφή με τον φυσικό και κοινωνικό περίγυρο. Σε ακραίες περιπτώσεις, η εικονική ζωή γίνεται σημαντικότερη από την πραγματική. Οι σχέσεις με φίλους, γονείς και συμμαθητές μπορεί να γίνουν προβληματικές ή σπάνιες. Μπορεί επίσης να παραμεληθούν βασικές καθημερινές δραστηριότητες, η σχολική ζωή, η σωματική άσκηση, η προσωπική φροντίδα και η υγιεινή. Το φαινόμενο αυτό μπορεί να οδηγήσει σε συναισθηματική απομόνωση και να απαιτήσει ειδική υποστήριξη.</p>
+<h4>Διαδικτυακός εκφοβισμός</h4>
+<p>Ο διαδικτυακός εκφοβισμός είναι μια επιθετική, σκόπιμη και επαναλαμβανόμενη πράξη που πραγματοποιείται μέσω ηλεκτρονικών μορφών επικοινωνίας εναντίον ενός ατόμου που δυσκολεύεται να υπερασπιστεί τον εαυτό του. Αποτελεί συνέχεια του σχολικού ή κοινωνικού εκφοβισμού με ψηφιακά μέσα. Μπορεί να εμφανιστεί μέσα από email, κοινωνικά δίκτυα, ιστολόγια, ιστοσελίδες, δωμάτια συζήτησης, διαδικτυακά παιχνίδια και κινητά τηλέφωνα. Οι μορφές του περιλαμβάνουν προσβλητικά ή απειλητικά μηνύματα, διακωμώδηση, εξευτελισμό, άσεμνο περιεχόμενο, δημιουργία ψεύτικων προφίλ, δημοσίευση προσωπικών φωτογραφιών ή βίντεο χωρίς συγκατάθεση και αποκλεισμό ή παρενόχληση μέσα σε ψηφιακές κοινότητες. Η σοβαρότητα του κυβερνοεκφοβισμού οφείλεται στο ότι εισβάλλει στον προσωπικό χώρο του θύματος και μπορεί να συνεχίζεται οποιαδήποτε στιγμή της ημέρας. Το υλικό που δημοσιεύεται μπορεί να αντιγραφεί, να διαμοιραστεί και να παραμείνει στο Διαδίκτυο για μεγάλο χρονικό διάστημα. Έτσι, το θύμα συχνά αισθάνεται ότι δεν υπάρχει ασφαλής χώρος διαφυγής. Η αντιμετώπιση απαιτεί ψυχραιμία, υποστήριξη και τεκμηρίωση. Το παιδί ή ο έφηβος πρέπει να ενθαρρύνεται να μιλήσει σε κάποιον ενήλικο που εμπιστεύεται. Δεν πρέπει να απαντά στον εκφοβισμό με αντίστοιχη επιθετικότητα. Είναι χρήσιμο να κρατούνται αποδεικτικά στοιχεία, όπως στιγμιότυπα οθόνης, μηνύματα και email. Ανάλογα με τη σοβαρότητα του περιστατικού, μπορεί να χρειαστεί επικοινωνία με το σχολείο, με την πλατφόρμα όπου έγινε η παρενόχληση ή με αρμόδιες αρχές.</p>
+<h4>Παραπληροφόρηση, ψευδείς ειδήσεις και αστικοί μύθοι</h4>
+<p>Το Διαδίκτυο προσφέρει αναρίθμητες ευκαιρίες μάθησης και ενημέρωσης, αλλά δεν διαθέτει πάντα αποτελεσματικούς μηχανισμούς ελέγχου της εγκυρότητας των πληροφοριών. Έτσι, οι χρήστες μπορεί να οδηγηθούν σε λανθασμένα συμπεράσματα εξαιτίας αναληθών, ελλιπών, παραποιημένων ή παραπλανητικών πληροφοριών. Οι αστικοί μύθοι και οι ψηφιακές φάρσες διαδίδονται με μεγάλη ταχύτητα. Συχνά παρουσιάζονται με τρόπο που φαίνεται αξιόπιστος, αξιοποιώντας εικόνες, τεχνική ορολογία, δήθεν μαρτυρίες ή ψευδή στοιχεία αυθεντικότητας. Το πρόβλημα γίνεται ακόμη σοβαρότερο όταν οι χρήστες αναπαράγουν πληροφορίες χωρίς να τις ελέγχουν. Η ανάπτυξη κριτικής σκέψης είναι βασική προϋπόθεση για την ασφαλή χρήση του Διαδικτύου. Ο χρήστης χρειάζεται να ελέγχει την πηγή, τον συγγραφέα, την ημερομηνία, τον σκοπό του κειμένου και την ύπαρξη άλλων αξιόπιστων πηγών που επιβεβαιώνουν την πληροφορία. Η ικανότητα διάκρισης ανάμεσα στην έγκυρη πληροφορία και την παραπληροφόρηση αποτελεί βασικό στοιχείο του ψηφιακού γραμματισμού.</p>
+</details>
+<details>
+<summary>Τεχνικά μέτρα προστασίας &amp; Διαπαιδαγώγηση</summary>
+<h4>Τεχνικά μέτρα προστασίας</h4>
+<p>Η αντιμετώπιση των ψηφιακών κινδύνων μπορεί να βασιστεί σε τεχνικά μέτρα προστασίας. Σε αυτά περιλαμβάνονται φίλτρα περιεχομένου, λευκές και μαύρες λίστες, γονικός έλεγχος, σήμανση ιστοσελίδων, ηλικιακές διαβαθμίσεις, έλεγχος ανεπιθύμητων μηνυμάτων, λογισμικά antivirus και antispyware, καθώς και τείχη προστασίας. Οι λευκές λίστες επιτρέπουν την πρόσβαση μόνο σε ιστοσελίδες που θεωρούνται κατάλληλες, ενώ οι μαύρες λίστες αποκλείουν ιστοσελίδες ή αποστολείς που θεωρούνται επικίνδυνοι. Τα φίλτρα γονικού ελέγχου μπορούν να περιορίσουν την πρόσβαση σε συγκεκριμένες κατηγορίες περιεχομένου, να ορίσουν χρονικά όρια χρήσης ή να καταγράψουν τη δραστηριότητα του χρήστη. Το σύστημα PEGI αποτελεί παράδειγμα ηλικιακής διαβάθμισης για ψηφιακά παιχνίδια και προϊόντα ψυχαγωγίας. Βοηθά κυρίως τους γονείς να επιλέγουν περιεχόμενο κατάλληλο για την ηλικία των παιδιών τους. Παρά τη χρησιμότητά τους, τα τεχνικά μέτρα δεν είναι απόλυτα αποτελεσματικά. Τα φίλτρα μπορεί να αποκλείσουν κατά λάθος χρήσιμο περιεχόμενο ή να επιτρέψουν πρόσβαση σε περιεχόμενο που θα έπρεπε να αποκλειστεί. Τα spam filters μπορεί να χαρακτηρίσουν λανθασμένα νόμιμα μηνύματα ως ανεπιθύμητα ή να αφήσουν επικίνδυνα μηνύματα να φτάσουν στον χρήστη. Επομένως, τα τεχνικά μέσα είναι χρήσιμα, αλλά δεν μπορούν να αντικαταστήσουν την κρίση και την εκπαίδευση του χρήστη.</p>
+<h4>Διαπαιδαγώγηση και ενημέρωση</h4>
+<p>Η ουσιαστική προστασία των παιδιών και των εφήβων δεν μπορεί να βασιστεί μόνο στην απαγόρευση ή στον τεχνικό έλεγχο. Χρειάζεται διαπαιδαγώγηση, δηλαδή συστηματική προετοιμασία των χρηστών ώστε να κινούνται με ασφάλεια στο ψηφιακό περιβάλλον. Μια χρήσιμη αναλογία είναι η σχέση του παιδιού με τη θάλασσα. Η θάλασσα μπορεί να είναι επικίνδυνη, αλλά οι γονείς δεν απαγορεύουν στα παιδιά κάθε επαφή μαζί της. Αντίθετα, τα εξοικειώνουν σταδιακά, τους μαθαίνουν κανόνες ασφάλειας, τα συνοδεύουν στην αρχή και στη συνέχεια τα βοηθούν να αυτονομηθούν. Με τον ίδιο τρόπο, τα παιδιά χρειάζεται να μάθουν να χρησιμοποιούν το Διαδίκτυο με ασφάλεια, όχι να το αντιμετωπίζουν μόνο ως απειλή. Η διαπαιδαγώγηση περιλαμβάνει συζήτηση, κοινή πλοήγηση, παρουσίαση θετικών ψηφιακών πόρων, εξήγηση των κινδύνων, καλλιέργεια υπευθυνότητας και ενθάρρυνση της κριτικής σκέψης. Το παιδί πρέπει να μάθει τι σημαίνει ασφαλής κωδικός, προστασία προσωπικών δεδομένων, σεβασμός στην ιδιωτικότητα των άλλων, αποφυγή ύποπτων συνδέσμων, αναφορά προβληματικού περιεχομένου και υπεύθυνη συμμετοχή σε διαδικτυακές κοινότητες. Η διαπαιδαγώγηση είναι ίσως το ισχυρότερο μέσο προστασίας, επειδή βοηθά τον χρήστη να λειτουργεί αυτόνομα και υπεύθυνα ακόμη και όταν δεν υπάρχει εξωτερικός έλεγχος.</p>
+<h4>Διδακτική αξιοποίηση στο μάθημα της ξένης γλώσσας</h4>
+<p>Η ασφαλής χρήση του Διαδικτύου μπορεί να ενταχθεί δημιουργικά στη διδασκαλία της ξένης γλώσσας. Θέματα όπως η ιδιωτικότητα, τα κοινωνικά δίκτυα, η παραπληροφόρηση, ο κυβερνοεκφοβισμός και η ψηφιακή ταυτότητα προσφέρονται για συζήτηση, παραγωγή λόγου, επιχειρηματολογία και δραστηριότητες διαμεσολάβησης. Ένα βίντεο, ένα infographic ή ένα αυθεντικό ψηφιακό κείμενο μπορεί να αποτελέσει αφορμή για γλωσσική και παιδαγωγική δραστηριότητα. Οι μαθητές μπορούν να εργαστούν σε ομάδες, να αναλύσουν επιχειρήματα, να οργανώσουν debate ανάμεσα σε «γονείς» και «μαθητές», να δημιουργήσουν οδηγούς ασφαλούς πλοήγησης, να συντάξουν ενημερωτικά φυλλάδια ή να παρουσιάσουν κανόνες υπεύθυνης χρήσης των κοινωνικών δικτύων. Με αυτόν τον τρόπο, η διδασκαλία της ξένης γλώσσας δεν περιορίζεται στην εξάσκηση λεξιλογίου και γραμματικής. Συνδέεται με την ανάπτυξη ψηφιακού γραμματισμού, κριτικής σκέψης, κοινωνικής υπευθυνότητας και ενεργού πολιτειότητας.</p>
+<h4>Πόροι και φορείς υποστήριξης</h4>
+<p>Η ασφαλής χρήση του Διαδικτύου υποστηρίζεται από διάφορους ψηφιακούς και θεσμικούς φορείς. Υπάρχουν ιστοσελίδες που προσφέρουν ενημέρωση για την ασφάλεια στο Διαδίκτυο, πλατφόρμες αναφοράς παράνομου ή επιβλαβούς περιεχομένου, υπηρεσίες ελέγχου ψευδών ειδήσεων και φορείς που παρέχουν συμβουλευτική σε μαθητές, γονείς και εκπαιδευτικούς. Τέτοιοι πόροι μπορούν να αξιοποιηθούν στο σχολείο για δραστηριότητες ενημέρωσης, πρόληψης και ευαισθητοποίησης. Μπορούν επίσης να βοηθήσουν τους εκπαιδευτικούς να σχεδιάσουν παρεμβάσεις για την Ημέρα Ασφαλούς Διαδικτύου ή για ευρύτερα προγράμματα ψηφιακής αγωγής.</p>
+</details>
+<details>
+<summary>Πολιτειότητα, Ψηφιακή ταυτότητα και Τεχνητή Νοημοσύνη</summary>
+<h4>Πολιτειότητα και ψηφιακή πολιτειότητα</h4>
+<p>Η πολιτειότητα δεν περιορίζεται στην έννοια της υπηκοότητας ή της ιθαγένειας. Συνδέεται με τα δικαιώματα, τις υποχρεώσεις, τη συμμετοχή και την υπεύθυνη δράση του ατόμου μέσα στην κοινωνία. Στην ψηφιακή εποχή, η πολιτειότητα επεκτείνεται και στον κυβερνοχώρο. Η ψηφιακή πολιτειότητα αφορά τον τρόπο με τον οποίο οι άνθρωποι συμμετέχουν, επικοινωνούν, δημιουργούν, συνεργάζονται και εκφράζονται στο ψηφιακό περιβάλλον. Περιλαμβάνει την ηλεκτρονική διακυβέρνηση, τη συμμετοχή σε δημόσιες διαδικτυακές συζητήσεις, την προστασία προσωπικών δεδομένων, τη διαχείριση της ψηφιακής ταυτότητας και την υπεύθυνη χρήση της πληροφορίας. Ο ψηφιακός πολίτης χρειάζεται να γνωρίζει τα δικαιώματα και τις υποχρεώσεις του στο Διαδίκτυο. Πρέπει να σέβεται τους άλλους, να προστατεύει την ιδιωτικότητά του, να αποφεύγει τη λογοκλοπή, να αναφέρει τις πηγές του, να κατανοεί τη σημασία των πνευματικών δικαιωμάτων και να αξιολογεί κριτικά τις πληροφορίες που συναντά.</p>
+<h4>Ψηφιακή ταυτότητα, ιδιωτικότητα και πνευματική ιδιοκτησία</h4>
+<p>Η ψηφιακή ταυτότητα αποτελεί βασική διάσταση της ψηφιακής πολιτειότητας. Κάθε χρήστης αφήνει ψηφιακά ίχνη μέσα από τις αναρτήσεις, τα σχόλια, τις φωτογραφίες, τις αναζητήσεις, τις εγγραφές σε υπηρεσίες και τη συμμετοχή του σε πλατφόρμες. Αυτά τα ίχνη μπορούν να επηρεάσουν τη φήμη, τις σχέσεις, τις σπουδές ή ακόμη και την επαγγελματική πορεία ενός ατόμου. Η προστασία της ιδιωτικότητας είναι επίσης κρίσιμη. Οι χρήστες πρέπει να γνωρίζουν ποιες πληροφορίες κοινοποιούν, σε ποιον τις κοινοποιούν και με ποιες συνέπειες. Πρέπει να είναι προσεκτικοί με τους κωδικούς πρόσβασης, τις ρυθμίσεις απορρήτου, τις εφαρμογές που χρησιμοποιούν και τα προσωπικά δεδομένα που παραχωρούν. Η πνευματική ιδιοκτησία αποτελεί ακόμη ένα σημαντικό πεδίο. Το γεγονός ότι ένα κείμενο, μια εικόνα, ένα βίντεο ή ένα τραγούδι βρίσκεται στο Διαδίκτυο δεν σημαίνει ότι μπορεί να χρησιμοποιηθεί ελεύθερα χωρίς αναφορά ή άδεια. Οι μαθητές χρειάζεται να μάθουν να αναγνωρίζουν τις πηγές τους, να αποφεύγουν τη λογοκλοπή και να κατανοούν βασικές έννοιες όπως τα Creative Commons.</p>
+<h4>Θεματικές της ψηφιακής πολιτειότητας</h4>
+<p>Η ψηφιακή πολιτειότητα μπορεί να οργανωθεί γύρω από βασικές θεματικές. Η πρόσβαση και η ένταξη αφορούν τη δυνατότητα όλων των ανθρώπων να συμμετέχουν στο ψηφιακό περιβάλλον χωρίς αποκλεισμούς. Η μάθηση και η δημιουργικότητα συνδέονται με την αξιοποίηση των ψηφιακών μέσων για παραγωγή γνώσης και έκφραση. Η πληροφοριακή παιδεία αφορά την ικανότητα αναζήτησης, αξιολόγησης και χρήσης πληροφοριών. Η ηθική και η ενσυναίσθηση είναι απαραίτητες για τον σεβασμό των άλλων στον ψηφιακό χώρο. Η υγεία και η ευεξία συνδέονται με την ισορροπημένη χρήση της τεχνολογίας και την αποφυγή υπερβολών. Η διαδικτυακή παρουσία και επικοινωνία αφορούν τον τρόπο με τον οποίο ο χρήστης παρουσιάζει τον εαυτό του και αλληλεπιδρά με τους άλλους. Η ενεργή συμμετοχή περιλαμβάνει τη χρήση των ψηφιακών μέσων για κοινωνική, πολιτική και πολιτιστική δράση. Τα δικαιώματα και οι υποχρεώσεις αφορούν την υπεύθυνη συμπεριφορά στο Διαδίκτυο. Το απόρρητο και η ασφάλεια συνδέονται με την προστασία δεδομένων και συστημάτων. Η καταναλωτική ευαισθητοποίηση αφορά την ικανότητα του χρήστη να αναγνωρίζει διαφημιστικές πρακτικές, εμπορικές στρατηγικές και πιθανούς κινδύνους στις ψηφιακές συναλλαγές.</p>
+<h4>Αλήθεια, fake news και μετα-αλήθεια</h4>
+<p>Η ψηφιακή εποχή έχει αλλάξει τον τρόπο με τον οποίο οι άνθρωποι ενημερώνονται και σχηματίζουν άποψη. Οι ψευδείς ειδήσεις και η παραπληροφόρηση μπορούν να επηρεάσουν την κοινή γνώμη, να ενισχύσουν προκαταλήψεις και να δημιουργήσουν σύγχυση. Το φαινόμενο της μετα-αλήθειας περιγράφει καταστάσεις στις οποίες τα αντικειμενικά γεγονότα επηρεάζουν λιγότερο την κοινή γνώμη από το συναίσθημα, την προσωπική πεποίθηση ή την ιδεολογική ταύτιση. Η εκπαίδευση έχει καθοριστικό ρόλο στην αντιμετώπιση αυτού του φαινομένου. Οι μαθητές χρειάζεται να μάθουν να διασταυρώνουν πληροφορίες, να αναγνωρίζουν ύποπτες πηγές, να ελέγχουν τίτλους και εικόνες, να εντοπίζουν υπερβολές ή χειριστικό λόγο και να αντιλαμβάνονται πότε ένα κείμενο επιχειρεί να τους πείσει μέσω φόβου, θυμού ή προκατάληψης.</p>
+<h4>Ψηφια πολιτειότητα και Τεχνητή Νοημοσύνη</h4>
+<p>Η Τεχνητή Νοημοσύνη δημιουργεί νέες δυνατότητες στην εκπαίδευση, αλλά και νέες προκλήσεις. Μπορεί να υποστηρίξει την εξατομικευμένη μάθηση, να βοηθήσει τους εκπαιδευτικούς στη δημιουργία υλικού, να προσφέρει ανατροφοδότηση και να διευκολύνει την πρόσβαση στη γνώση. Ταυτόχρονα, εγείρει ζητήματα δεοντολογίας, αξιοπιστίας, πνευματικών δικαιωμάτων, διαφάνειας, προκαταλήψεων και προστασίας προσωπικών δεδομένων. Ο γραμματισμός στην Τεχνητή Νοημοσύνη δεν πρέπει να περιορίζεται στη χρήση εργαλείων. Περιλαμβάνει κατανόηση του τρόπου λειτουργίας τους, ικανότητα αξιολόγησης των αποτελεσμάτων τους, δημιουργική αξιοποίησή τους και επίγνωση των ηθικών συνεπειών τους. Οι μαθητές και οι εκπαιδευτικοί χρειάζεται να αναπτύξουν στάση υπεύθυνης χρήσης, ώστε να αξιοποιούν την Τεχνητή Νοημοσύνη χωρίς να χάνουν την κριτική τους σκέψη.</p>
+<h4>Συμπέρασμα</h4>
+<p>Το Διαδίκτυο και οι ψηφιακές τεχνολογίες δεν αποτελούν από μόνες τους ούτε απειλή ούτε λύση. Είναι ένα ισχυρό περιβάλλον μάθησης, επικοινωνίας, δημιουργίας και συμμετοχής, το οποίο όμως συνοδεύεται από κινδύνους και απαιτεί υπεύθυνη χρήση. Η προστασία των παιδιών και των εφήβων δεν επιτυγχάνεται μόνο με απαγορεύσεις ή τεχνικά φίλτρα. Χρειάζεται συνδυασμός τεχνικών μέτρων, ενημέρωσης, παιδαγωγικής καθοδήγησης, διαλόγου και καλλιέργειας κριτικής σκέψης. Ο τελικός στόχος είναι η διαμόρφωση πολιτών που μπορούν να χρησιμοποιούν τις ψηφιακές τεχνολογίες με ασφάλεια, υπευθυνότητα, δημιουργικότητα και ηθική συνείδηση. Ο σύγχρονος μαθητής χρειάζεται να γίνει ενεργός ψηφιακός πολίτης: να προστατεύει τον εαυτό του, να σέβεται τους άλλους, να αξιολογεί την πληροφορία, να συμμετέχει δημιουργικά και να κατανοεί τις συνέπειες της ψηφιακής του παρουσίας.</p>
+</details>
+</section>
+<!-- ΠΑΡΑΔΕΙΓΜΑΤΑ ΜΕ TABS -->
+<section>
+<h2>Διδακτικές Παρεμβάσεις</h2>
+<div class="tabs-container">
+<div class="tab-buttons">
+<button class="tab-button active" onclick="openTab(event, 'English')">Αγγλικά</button>
+<button class="tab-button" onclick="openTab(event, 'German')">Γερμανικά</button>
+<button class="tab-button" onclick="openTab(event, 'French')">Γαλλικά</button>
+</div>
+<!-- Tab: ΑΓΓΛΙΚΑ -->
+<div class="tab-content" id="English" style="display: block;">
+<div class="content-block">
+<h3>Τίτλος εκπαιδευτικής δραστηριότητας</h3>
+<p>Be a Smart Digital Citizen! / Γίνε υπεύθυνος ψηφιακός πολίτης!</p>
+<h4>Σχεδιαστής δραστηριότητας</h4>
+<p>Ονοματεπώνυμο: ........................................ </p>
+<p>Ειδικότητα: Εκπαιδευτικός Αγγλικής Γλώσσας</p>
+<h4>Γνωστικό αντικείμενο</h4>
+<p>Αγγλικά</p>
+<h4>Τάξη ή τάξεις στις οποίες απευθύνεται</h4>
+<p>Η δραστηριότητα απευθύνεται σε μαθητές/τριες Γυμνασίου, κυρίως Β’ ή Γ’ Γυμνασίου. Μπορεί να αξιοποιηθεί και στην Α’ Λυκείου με κατάλληλη προσαρμογή του γλωσσικού επιπέδου.</p>
+<h4>Επίπεδο γλωσσομάθειας</h4>
+<p>Α2–Β1 σύμφωνα με την κλίμακα του ΚΕΠΑ.</p>
+<h4>Προσδοκώμενα μαθησιακά αποτελέσματα</h4>
+<p>Με την ολοκλήρωση της δραστηριότητας οι μαθητές/τριες αναμένεται:</p>
+<ul>
+<li>να κατανοούν βασικές έννοιες σχετικές με την ψηφιακή πολιτειότητα, όπως digital citizen, online safety, privacy, password, cyberbullying, fake news, respect online,</li>
+<li>να αναγνωρίζουν πιθανούς κινδύνους κατά τη χρήση του διαδικτύου, όπως παραπληροφόρηση, υπερβολική έκθεση προσωπικών δεδομένων, ύποπτοι σύνδεσμοι και διαδικτυακός εκφοβισμός,</li>
+<li>να διακρίνουν υπεύθυνες και μη υπεύθυνες διαδικτυακές συμπεριφορές,</li>
+<li>να χρησιμοποιούν απλό αγγλικό λεξιλόγιο για να δίνουν συμβουλές σχετικά με την ασφαλή και υπεύθυνη χρήση του διαδικτύου,</li>
+<li>να συνεργάζονται σε ομάδες για τη δημιουργία ενός σύντομου ψηφιακού ή έντυπου οδηγού με κανόνες ψηφιακής πολιτειότητας,</li>
+<li>να παράγουν σύντομα αγγλικά μηνύματα με χρήση γλωσσικών δομών όπως You should…, You shouldn’t…, Always…, Never…, Be careful when…,</li>
+<li>να αναπτύσσουν κριτική στάση απέναντι στο ψηφιακό περιεχόμενο που συναντούν.</li>
+</ul>
+<h4>Είδος δραστηριότητας</h4>
+<p>Διερευνητική δραστηριότητα, γλωσσική εξάσκηση, ομαδοσυνεργατική εργασία, συζήτηση, δημιουργία ψηφιακής αφίσας ή σύντομου οδηγού, επίλυση προβλήματος.</p>
+<h4>Περιγραφή της δραστηριότητας</h4>
+<p>Η δραστηριότητα έχει ως στόχο να ενημερώσει και να ευαισθητοποιήσει τους μαθητές/τριες σχετικά με την ψηφιακή πολιτειότητα και την ασφαλή χρήση του διαδικτύου, μέσα από τη χρήση της Αγγλικής Γλώσσας. Αρχικά, οι μαθητές/τριες παρακολουθούν ένα σύντομο εισαγωγικό οπτικό ερέθισμα, όπως ένα infographic ή μια απλή παρουσίαση με βασικούς κανόνες ψηφιακής πολιτειότητας. 
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 1/Infographic.png')">📄 Προβολή Infographic</button></div><p> 
+                    Στη συνέχεια, ο/η εκπαιδευτικός παρουσιάζει βασικό λεξιλόγιο στα αγγλικά, όπως: digital citizen, online safety, personal information, password, privacy, cyberbullying, fake news, respect, report, block, think before you post. 
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 1/Glossary.png')">📄 Προβολή Λεξιλογίου</button></div><p> 
+                    Ακολουθεί σύντομη συζήτηση στην τάξη, με ερωτήσεις όπως: What do you do online every day? What is safe or unsafe online? What should a good digital citizen do? What should we never share online? Στη συνέχεια, οι μαθητές/τριες εργάζονται σε ομάδες. Κάθε ομάδα λαμβάνει μία σύντομη κάρτα-σενάριο στα αγγλικά, προσαρμοσμένη στο επίπεδο Α2–Β1. Τα σενάρια παρουσιάζουν καθημερινές καταστάσεις από τη διαδικτυακή ζωή των μαθητών, όπως: A student shares a classmate’s photo without asking. A student receives a strange message with a link. A student finds information online for a school project but does not check the source. A student uses the same easy password everywhere. A student sees a mean comment about a friend in a group chat. Οι μαθητές/τριες συζητούν στην ομάδα τους και αποφασίζουν: What is the problem? Is this safe or unsafe? What should the student do? What rule can we write for digital citizens? Κάθε ομάδα γράφει 3–4 απλούς κανόνες στα αγγλικά. Για παράδειγμα: Don’t share personal information online. Always ask before you post a photo. Check information before you use it. Use strong passwords. Be kind online. Don’t click on strange links. Report cyberbullying to an adult. Στο τελικό στάδιο, οι ομάδες δημιουργούν μια μικρή ψηφιακή αφίσα ή έναν σύντομο οδηγό με τίτλο “Our Digital Citizenship Code”. Η αφίσα μπορεί να δημιουργηθεί σε Canva, Google Slides, PowerPoint ή σε χαρτί, ανάλογα με τις διαθέσιμες υποδομές. Η δραστηριότητα ολοκληρώνεται με σύντομη παρουσίαση των αφισών στην τάξη. Κάθε ομάδα παρουσιάζει 2–3 κανόνες στα αγγλικά και εξηγεί γιατί είναι σημαντικοί. Στο τέλος, η τάξη συνθέτει έναν κοινό δεκάλογο ψηφιακής πολιτειότητας.</p>
+<h4>Διάρκεια</h4>
+<p>45 λεπτά ή 2 διδακτικές ώρες, ανάλογα με το βάθος επεξεργασίας και το αν η αφίσα θα δημιουργηθεί ψηφιακά ή χειρόγραφα.</p>
+<h4>Ενδεικτική κατανομή χρόνου για μία διδακτική ώρα</h4>
+<p>5’ Εισαγωγή στο θέμα και ενεργοποίηση πρότερων γνώσεων<br/>10’ Παρουσίαση βασικού λεξιλογίου και παραδειγμάτων<br/>10’ Εργασία σε ομάδες με κάρτες-σενάρια<br/>15’ Δημιουργία κανόνων και μικρής αφίσας<br/>5’ Παρουσίαση και αναστοχασμός</p>
+<h4>Οργάνωση τάξης</h4>
+<p>Οι μαθητές/τριες εργάζονται σε μικρές ομάδες των 3–4 ατόμων. Η ομαδική εργασία ενισχύει τη συνεργασία, την ανταλλαγή απόψεων και την παραγωγή προφορικού και γραπτού λόγου στα αγγλικά. Ο/η εκπαιδευτικός λειτουργεί ως συντονιστής/τρια, υποστηρίζει γλωσσικά τους μαθητές, εξηγεί άγνωστο λεξιλόγιο, βοηθά στη διατύπωση των κανόνων και ενθαρρύνει τη συμμετοχή όλων.</p>
+<h4>Ψηφιακό εκπαιδευτικό περιεχόμενο, εργαλεία, πηγές</h4>
+<p>Μπορούν να αξιοποιηθούν: σύντομο infographic για την ασφαλή χρήση του διαδικτύου, υλικό από το SaferInternet4Kids, υλικό από το SaferInternet, σύντομο βίντεο για online safety ή digital citizenship, Canva ή Google Slides για τη δημιουργία ψηφιακής αφίσας, Padlet ή ψηφιακός πίνακας για τη συλλογή κανόνων, διαδραστικός πίνακας ή προβολέας, φύλλο εργασίας με κάρτες-σενάρια και χρήσιμες φράσεις. 
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 1/Worksheet.png')">📄 Προβολή Φύλλου Εργασίας</button></div>
+<h4>Οδηγίες προς τους μαθητές</h4>
+<p>Be a Smart Digital Citizen! Today we are going to talk about digital citizenship. A digital citizen is a person who uses the internet safely, kindly and responsibly. Work in groups. Read your situation card. Talk with your group and answer the questions: What is the problem? Is it safe or unsafe? What should the student do? What rule can you write for all digital citizens? Use these phrases: You should… You shouldn’t… Always… Never… Be careful when… Don’t… Ask an adult when… Then create a small poster with the title: Our Digital Citizenship Code Write 3–4 rules in English. Add simple icons, drawings or pictures. At the end, present your poster to the class. Example rules: Never share your password. Don’t post photos of others without asking. Be kind online. Check information before you believe it. Don’t click on strange links. Tell an adult if you see cyberbullying.</p>
+<h4>Ενδεικτικές κάρτες-σενάρια για τις ομάδες</h4>
+<div class="scenario-card">
+<strong>Scenario 1: The Photo</strong><br/>
+                        Maria takes a funny photo of her friend and posts it in the class group chat. Her friend feels sad and angry.<br/>
+<em>Questions:</em> What is the problem? What should Maria do? What is your digital citizenship rule?<br/>
+<button class="img-button" onclick="openImageModal('files 1/a.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scenario 2: The Strange Link</strong><br/>
+                        Nick receives a message: “Click here! You won a free phone!” He does not know the sender.<br/>
+<em>Questions:</em> Is this message safe? What should Nick do? What is your digital citizenship rule?<br/>
+<button class="img-button" onclick="openImageModal('files 1/b.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scenario 3: The School Project</strong><br/>
+                        Eleni finds information for a school project on a website. She copies everything and does not write the source.<br/>
+<em>Questions:</em> What is the problem? What should Eleni do? What is your digital citizenship rule?<br/>
+<button class="img-button" onclick="openImageModal('files 1/c.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scenario 4: The Password</strong><br/>
+                        Kostas uses the password “123456” for his email, games and social media.<br/>
+<em>Questions:</em> Is this a strong password? What should Kostas do? What is your digital citizenship rule?<br/>
+<button class="img-button" onclick="openImageModal('files 1/d.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scenario 5: The Mean Comment</strong><br/>
+                        A student writes a mean comment about a classmate in an online group.<br/>
+<em>Questions:</em> Is this cyberbullying? What should the other students do? What is your digital citizenship rule?<br/>
+<button class="img-button" onclick="openImageModal('files 1/e.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<h4>Τεκμηρίωση της δραστηριότητας</h4>
+<p>Η δραστηριότητα επιλέχθηκε επειδή η ψηφιακή πολιτειότητα αποτελεί βασικό ζήτημα για τους μαθητές/τριες, οι οποίοι χρησιμοποιούν καθημερινά το διαδίκτυο για επικοινωνία, ψυχαγωγία και σχολικές εργασίες. Η ενημέρωση για την ασφαλή και υπεύθυνη χρήση των ψηφιακών τεχνολογιών δεν πρέπει να περιορίζεται σε θεωρητικές οδηγίες, αλλά να συνδέεται με πραγματικές καταστάσεις που οι μαθητές μπορούν να αναγνωρίσουν. Η χρήση σεναρίων βοηθά τους μαθητές/τριες να κατανοήσουν πρακτικά τι σημαίνει υπεύθυνη ψηφιακή συμπεριφορά. Οι μαθητές δεν απομνημονεύουν απλώς κανόνες, αλλά καλούνται να εντοπίσουν το πρόβλημα, να συζητήσουν πιθανές λύσεις και να διατυπώσουν συμβουλές στην Αγγλική Γλώσσα. Η δραστηριότητα ενισχύει παράλληλα τον ψηφιακό γραμματισμό και τη γλωσσική ανάπτυξη. Οι μαθητές εξασκούνται στην κατανόηση απλών αγγλικών κειμένων, στην παραγωγή σύντομου γραπτού λόγου και στην προφορική παρουσίαση. Παράλληλα, αναπτύσσουν δεξιότητες συνεργασίας, κριτικής σκέψης και κοινωνικής υπευθυνότητας. Η αξιοποίηση ψηφιακών εργαλείων, όπως Canva, Google Slides ή Padlet, προσθέτει αξία στη δραστηριότητα, επειδή επιτρέπει στους μαθητές να δημιουργήσουν αυθεντικό ψηφιακό προϊόν και να χρησιμοποιήσουν την τεχνολογία με δημιουργικό και υπεύθυνο τρόπο. Αν δεν υπάρχει τεχνική δυνατότητα, η δραστηριότητα μπορεί να υλοποιηθεί εξίσου αποτελεσματικά με έντυπες κάρτες και χειρόγραφες αφίσες.</p>
+<h4>Πρόσθετα στοιχεία</h4>
+<p>Η δραστηριότητα μπορεί να επεκταθεί με τη δημιουργία ενός κοινού ψηφιακού οδηγού της τάξης με τίτλο “Our Class Digital Citizenship Guide”. Ο οδηγός μπορεί να αναρτηθεί στην ηλεκτρονική τάξη ή στον πίνακα ανακοινώσεων του σχολείου. Μπορεί επίσης να συνδεθεί με την Ημέρα Ασφαλούς Διαδικτύου. Οι μαθητές μπορούν να παρουσιάσουν τις αφίσες τους σε άλλες τάξεις ή να δημιουργήσουν σύντομα μηνύματα ευαισθητοποίησης στα αγγλικά. Πιθανές δυσκολίες των μαθητών μπορεί να είναι το περιορισμένο λεξιλόγιο, η δυσκολία διατύπωσης συμβουλών στα αγγλικά ή η τάση να απαντούν στα ελληνικά. Για τον λόγο αυτό, ο/η εκπαιδευτικός μπορεί να δώσει έτοιμες φράσεις-στηρίγματα, λεξιλόγιο στον πίνακα και παραδείγματα κανόνων. Για μαθητές χαμηλότερου επιπέδου μπορούν να δοθούν ημιτελείς προτάσεις, όπως: Don’t share… Always check… Be kind… Ask an adult… Never click… Για μαθητές υψηλότερου επιπέδου μπορεί να ζητηθεί πιο αναπτυγμένη παραγωγή λόγου, όπως σύντομη παράγραφος με τίτλο “Why digital citizenship is important” ή δημιουργία σύντομου role-play ανάμεσα σε έναν μαθητή, έναν γονέα και έναν εκπαιδευτικό. Η τελική αξιολόγηση μπορεί να γίνει με απλό φύλλο αυτοαξιολόγησης, όπου οι μαθητές σημειώνουν: I can name three online dangers. I can give advice in English. I can explain one rule for digital citizens. I can work with my group. I can use the internet more safely.</p>
+</div>
+</div>
+<!-- Tab: ΓΕΡΜΑΝΙΚΑ -->
+<div class="tab-content" id="German">
+<div class="content-block">
+<h3>Τίτλος εκπαιδευτικής δραστηριότητας</h3>
+<p>Ich bin ein guter digitaler Bürger! / Είμαι καλός ψηφιακός πολίτης!</p>
+<h4>Σχεδιαστής δραστηριότητας</h4>
+<p>Ονοματεπώνυμο: ........................................ </p>
+<p>Ειδικότητα: Εκπαιδευτικός Γερμανικής Γλώσσας</p>
+<h4>Γνωστικό αντικείμενο</h4>
+<p>Γερμανικά</p>
+<h4>Τάξη ή τάξεις στις οποίες απευθύνεται</h4>
+<p>Η δραστηριότητα απευθύνεται σε μαθητές/τριες Γυμνασίου που διδάσκονται Γερμανικά ως δεύτερη ξένη γλώσσα. Μπορεί να αξιοποιηθεί κυρίως στη Β’ ή Γ’ Γυμνασίου, ανάλογα με το επίπεδο της τάξης.</p>
+<h4>Επίπεδο γλωσσομάθειας</h4>
+<p>Α1+–Α2 σύμφωνα με την κλίμακα του ΚΕΠΑ.</p>
+<h4>Προσδοκώμενα μαθησιακά αποτελέσματα</h4>
+<p>Με την ολοκλήρωση της δραστηριότητας οι μαθητές/τριες αναμένεται:</p>
+<ul>
+<li>να κατανοούν βασικό λεξιλόγιο στα γερμανικά σχετικά με την ψηφιακή πολιτειότητα και την ασφάλεια στο διαδίκτυο,</li>
+<li>να αναγνωρίζουν απλές ψηφιακές συμπεριφορές ως ασφαλείς ή μη ασφαλείς,</li>
+<li>να κατανοούν σύντομα και απλά σενάρια στα γερμανικά,</li>
+<li>να απαντούν σε απλές ερωτήσεις με σύντομες φράσεις,</li>
+<li>να δίνουν βασικές συμβουλές στα γερμανικά χρησιμοποιώντας απλές δομές,</li>
+<li>να συνεργάζονται σε ομάδες για να δημιουργήσουν έναν σύντομο κώδικα ψηφιακής συμπεριφοράς,</li>
+<li>να παράγουν απλούς κανόνες στα γερμανικά με τη μορφή σύντομων προτάσεων,</li>
+<li>να συνδέουν τη χρήση της γερμανικής γλώσσας με πραγματικές καταστάσεις της καθημερινής ψηφιακής ζωής.</li>
+</ul>
+<h4>Βασικό λεξιλόγιο</h4>
+<p>Ο/η εκπαιδευτικός παρουσιάζει και εξηγεί το παρακάτω λεξιλόγιο με εικόνες, παραδείγματα ή σύντομη μετάφραση: der digitale Bürger / die digitale Bürgerin = ο/η ψηφιακός/ή πολίτης, online sicher sein = είμαι ασφαλής στο διαδίκτυο, persönliche Daten = προσωπικά δεδομένα, das Passwort = ο κωδικός πρόσβασης, die Privatsphäre = η ιδιωτικότητα, Cybermobbing = διαδικτυακός εκφοβισμός, falsche Nachrichten = ψευδείς ειδήσεις, der Respekt = ο σεβασμός, melden = αναφέρω, blockieren = μπλοκάρω, erst denken, dann posten = πρώτα σκέφτομαι, μετά δημοσιεύω
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 2/Glossar 1 Deutsch.png')">📄 Προβολή Λεξιλογίου</button></div>
+<h4>Χρήσιμες γλωσσικές δομές</h4>
+<p>Οι μαθητές/τριες μπορούν να χρησιμοποιήσουν τις παρακάτω φράσεις: Das ist sicher. = Αυτό είναι ασφαλές. Das ist nicht sicher. = Αυτό δεν είναι ασφαλές. Das ist ein Problem. = Αυτό είναι πρόβλημα. Er/Sie soll … = Αυτός/Αυτή πρέπει να … Er/Sie soll nicht … = Αυτός/Αυτή δεν πρέπει να … Man soll … = Πρέπει να … Man soll nicht … = Δεν πρέπει να … Sei nett online. = Να είσαι ευγενικός/ή στο διαδίκτυο. Teile keine persönlichen Daten. = Μη μοιράζεσαι προσωπικά δεδομένα. Klicke nicht auf komische Links. = Μην πατάς σε περίεργους συνδέσμους. Benutze ein starkes Passwort. = Χρησιμοποίησε έναν δυνατό κωδικό. Frage zuerst. = Ρώτα πρώτα. Sprich mit einem Erwachsenen. = Μίλησε με έναν ενήλικο.
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 2/Glossar 2 Deutsch.png')">📄 Προβολή Φράσεων</button></div>
+<h4>Είδος δραστηριότητας</h4>
+<p>Διερευνητική δραστηριότητα, γλωσσική εξάσκηση, ομαδοσυνεργατική εργασία, συζήτηση, δημιουργία αφίσας ή σύντομου οδηγού, επίλυση προβλήματος.</p>
+<h4>Περιγραφή της δραστηριότητας</h4>
+<p>Η δραστηριότητα έχει ως στόχο την ενημέρωση και ευαισθητοποίηση των μαθητών/τριών σχετικά με την ψηφιακή πολιτειότητα μέσα από τη χρήση απλής Γερμανικής Γλώσσας. Στην αρχή, ο/η εκπαιδευτικός προβάλλει ένα απλό infographic στα γερμανικά με βασικούς κανόνες ψηφιακής πολιτειότητας. 
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 2/Infographic Deutsch.png')">📄 Προβολή Infographic</button></div><p> 
+                    Οι κανόνες είναι σύντομοι, οπτικοποιημένοι και γλωσσικά προσαρμοσμένοι στο επίπεδο Α1+–Α2. Ενδεικτικοί κανόνες: Schütze deine Daten. Benutze ein starkes Passwort. Denk zuerst, poste dann. Sei nett online. Prüfe Informationen. Klicke nicht auf komische Links. Frage, bevor du Fotos teilst. Sprich mit einem Erwachsenen. Ακολουθεί σύντομη εισαγωγική συζήτηση με απλές ερωτήσεις: Was machst du online? Chattest du mit Freunden? Spielst du online? Suchst du Informationen? Was ist sicher? Was ist nicht sicher? Στη συνέχεια, οι μαθητές/τριες χωρίζονται σε ομάδες των 3–4 ατόμων. Κάθε ομάδα παίρνει μία κάρτα-σενάριο στα γερμανικά. Τα σενάρια είναι σύντομα και βασίζονται σε καθημερινές ψηφιακές καταστάσεις: δημοσίευση φωτογραφίας χωρίς άδεια, ύποπτος σύνδεσμος, αντιγραφή πληροφοριών χωρίς πηγή, αδύναμος κωδικός, κακό σχόλιο σε ομαδική συνομιλία. Οι μαθητές/τριες διαβάζουν το σενάριο και απαντούν σε απλές ερωτήσεις: Was ist das Problem? Ist das sicher oder nicht sicher? Was soll die Person tun? Was ist eure digitale Regel? Οι απαντήσεις μπορούν να είναι σύντομες, με λέξεις-κλειδιά ή απλές προτάσεις. Ο/η εκπαιδευτικός παρέχει γλωσσική υποστήριξη στον πίνακα. Στο τελικό στάδιο, κάθε ομάδα δημιουργεί 3–4 απλούς κανόνες στα γερμανικά για έναν κοινό κώδικα ψηφιακής πολιτειότητας με τίτλο: Unser digitaler Klassen-Kodex Οι κανόνες μπορούν να γραφτούν σε χαρτί, σε αφίσα ή σε απλό ψηφιακό περιβάλλον, όπως Canva, Google Slides ή Padlet, εφόσον υπάρχει τεχνική δυνατότητα. Η δραστηριότητα ολοκληρώνεται με σύντομη παρουσίαση. Κάθε ομάδα διαβάζει 1–2 κανόνες στα γερμανικά. Στο τέλος, η τάξη επιλέγει τους καλύτερους κανόνες και δημιουργεί έναν κοινό δεκάλογο.</p>
+<h4>Διάρκεια</h4>
+<p>45 λεπτά ή 2 διδακτικές ώρες.</p>
+<h4>Ενδεικτική κατανομή για μία διδακτική ώρα</h4>
+<p>5’ Εισαγωγή στο θέμα με εικόνα ή infographic<br/>10’ Παρουσίαση λεξιλογίου και χρήσιμων φράσεων<br/>10’ Ανάγνωση και κατανόηση καρτών-σεναρίων<br/>15’ Ομαδική εργασία και δημιουργία κανόνων<br/>5’ Παρουσίαση και αναστοχασμός</p>
+<h4>Οργάνωση τάξης</h4>
+<p>Οι μαθητές/τριες εργάζονται σε ομάδες των 3–4 ατόμων. Ο/η εκπαιδευτικός: παρουσιάζει το βασικό λεξιλόγιο, εξηγεί τις οδηγίες, υποστηρίζει τις ομάδες γλωσσικά, δίνει έτοιμες φράσεις, βοηθά στη διατύπωση απλών γερμανικών προτάσεων, ενθαρρύνει όλους τους μαθητές να συμμετάσχουν. Οι μαθητές/τριες: διαβάζουν το σενάριο, εντοπίζουν το πρόβλημα, συζητούν πιθανές λύσεις, γράφουν απλούς κανόνες, παρουσιάζουν σύντομα την ιδέα τους.</p>
+<h4>Ψηφιακό εκπαιδευτικό περιεχόμενο, εργαλεία, πηγές</h4>
+<p>Μπορούν να αξιοποιηθούν: απλό infographic στα γερμανικά με κανόνες ψηφιακής πολιτειότητας, κάρτες-σενάρια στα γερμανικά, φύλλο εργασίας στα γερμανικά, λεξιλόγιο με εικόνες, Canva ή Google Slides για δημιουργία αφίσας, Padlet ή ψηφιακός πίνακας για συλλογή κανόνων, προβολέας ή διαδραστικός πίνακας, υλικό από φορείς ασφαλούς διαδικτύου, προσαρμοσμένο γλωσσικά από τον/την εκπαιδευτικό.
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 2/Arbeitsblatt.png')">📄 Προβολή Φύλλου Εργασίας</button></div>
+<h4>Οδηγίες προς τους μαθητές</h4>
+<p>Ich bin ein guter digitaler Bürger! Arbeitet in Gruppen. Lest eure Szenario-Karte. Sprecht zusammen und antwortet auf die Fragen. Was ist das Problem? Ist das sicher oder nicht sicher? Was soll die Person tun? Was ist eure digitale Regel? Benutzt diese Sätze: Das ist sicher. Das ist nicht sicher. Das ist ein Problem. Er/Sie soll … Er/Sie soll nicht … Man soll … Man soll nicht … Sei nett online. Sprich mit einem Erwachsenen. Schreibt dann 3–4 Regeln für digitale Bürgerinnen und Bürger. Titel: Unser digitaler Klassen-Kodex Beispiele: Schütze deine Daten. Benutze ein starkes Passwort. Sei nett online. Klicke nicht auf komische Links. Prüfe Informationen. Frage, bevor du Fotos teilst. Sprich mit einem Erwachsenen.</p>
+<h4>Ενδεικτικές κάρτες-σενάρια στα γερμανικά</h4>
+<div class="scenario-card">
+<strong>Szenario 1: Das Foto</strong><br/>
+                        Maria macht ein lustiges Foto von ihrer Freundin. Sie postet das Foto im Klassenchat. Ihre Freundin ist traurig und wütend.<br/>
+<button class="img-button" onclick="openImageModal('files 2/1.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Szenario 2: Der komische Link</strong><br/>
+                        Nick bekommt eine Nachricht: „Klick hier! Du gewinnst ein neues Handy!“ Er kennt die Person nicht.<br/>
+<button class="img-button" onclick="openImageModal('files 2/2.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Szenario 3: Das Schulprojekt</strong><br/>
+                        Eleni findet Informationen für ein Schulprojekt auf einer Webseite. Sie kopiert alles. Sie schreibt keine Quelle.<br/>
+<button class="img-button" onclick="openImageModal('files 2/3.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Szenario 4: Das Passwort</strong><br/>
+                        Kostas benutzt das Passwort „123456“ für seine E-Mail, Spiele und soziale Medien.<br/>
+<button class="img-button" onclick="openImageModal('files 2/4.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Szenario 5: Der gemeine Kommentar</strong><br/>
+                        Ein Schüler schreibt einen gemeinen Kommentar über einen Mitschüler in einer Online-Gruppe.<br/>
+<button class="img-button" onclick="openImageModal('files 2/5.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<h4>Τεκμηρίωση της δραστηριότητας</h4>
+<p>Η δραστηριότητα επιλέχθηκε επειδή η ψηφιακή πολιτειότητα αποτελεί άμεσα συνδεδεμένο θέμα με την καθημερινότητα των μαθητών/τριών. Οι μαθητές χρησιμοποιούν συχνά το διαδίκτυο για επικοινωνία, παιχνίδι, αναζήτηση πληροφοριών και σχολικές εργασίες. Επομένως, η διδασκαλία της Γερμανικής Γλώσσας μπορεί να συνδεθεί με ένα πραγματικό και χρήσιμο επικοινωνιακό πλαίσιο. Η προσαρμογή στο επίπεδο Α1+–Α2 επιτυγχάνεται με: σύντομα κείμενα, απλό λεξιλόγιο, οικείες καταστάσεις, συχνή χρήση εικόνων, έτοιμες φράσεις-στηρίγματα, επανάληψη βασικών δομών, περιορισμένη και καθοδηγούμενη παραγωγή λόγου. Οι κάρτες-σενάρια βοηθούν τους μαθητές να κατανοήσουν την έννοια της ψηφιακής πολιτειότητας μέσα από πρακτικά παραδείγματα. Αντί να απομνημονεύουν κανόνες, καλούνται να εντοπίσουν ένα πρόβλημα, να αποφασίσουν αν μια συμπεριφορά είναι ασφαλής ή όχι και να διατυπώσουν μια απλή συμβουλή στα γερμανικά. Η δραστηριότητα συνδυάζει γλωσσικούς και παιδαγωγικούς στόχους. Οι μαθητές εξασκούνται στην κατανόηση γραπτού λόγου, στην παραγωγή σύντομων προτάσεων, στη συνεργασία και στην προφορική παρουσίαση. Παράλληλα, καλλιεργούν δεξιότητες ψηφιακού γραμματισμού, υπευθυνότητας και σεβασμού στον διαδικτυακό χώρο. Η χρήση ψηφιακών εργαλείων, όπως Canva, Google Slides ή Padlet, προσθέτει αξία, καθώς οι μαθητές δημιουργούν ένα αυθεντικό προϊόν στη γλώσσα-στόχο. Ωστόσο, η δραστηριότητα μπορεί να υλοποιηθεί και χωρίς ψηφιακά μέσα, με έντυπες κάρτες και χειρόγραφες αφίσες.</p>
+<h4>Πρόσθετα στοιχεία</h4>
+<p>Για μαθητές που δυσκολεύονται περισσότερο, μπορούν να δοθούν ημιτελείς προτάσεις: Man soll … Man soll nicht … Er soll … Sie soll … Das ist sicher. Das ist nicht sicher. Das ist ein Problem. Για πιο προχωρημένους μαθητές, μπορεί να ζητηθεί μικρή προφορική παρουσίαση: Unsere Regel ist: … Sie ist wichtig, denn … Η δραστηριότητα μπορεί επίσης να επεκταθεί με: δημιουργία γερμανόγλωσσης αφίσας για την τάξη, μικρό role-play, σύντομο quiz λεξιλογίου, δημιουργία κοινού ψηφιακού οδηγού με τίτλο „Sicher online – unser Klassenratgeber“, σύνδεση με την Ημέρα Ασφαλούς Διαδικτύου.</p>
+<h4>Ενδεικτική αξιολόγηση</h4>
+<p>Η αξιολόγηση μπορεί να γίνει με βάση: τη συμμετοχή στην ομάδα, την κατανόηση του σεναρίου, τη σωστή χρήση βασικού λεξιλογίου, τη διατύπωση απλής συμβουλής, τη δημιουργία ενός κατανοητού κανόνα στα γερμανικά, την προφορική παρουσίαση της ομάδας. Δεν δίνεται έμφαση στη γραμματική τελειότητα, αλλά στην επικοινωνιακή αποτελεσματικότητα, στην κατανόηση του προβλήματος και στη χρήση της Γερμανικής Γλώσσας για έναν πραγματικό σκοπό.</p>
+</div>
+</div>
+<!-- Tab: ΓΑΛΛΙΚΑ -->
+<div class="tab-content" id="French">
+<div class="content-block">
+<h3>Τίτλος εκπαιδευτικής δραστηριότητας</h3>
+<p>Je suis un bon citoyen numérique ! / Είμαι καλός ψηφιακός πολίτης!</p>
+<h4>Σχεδιαστής δραστηριότητας</h4>
+<p>Ονοματεπώνυμο: ........................................ </p>
+<p>Ειδικότητα: Εκπαιδευτικός Γαλλικής Γλώσσας</p>
+<h4>Γνωστικό αντικείμενο</h4>
+<p>Γαλλικά</p>
+<h4>Τάξη ή τάξεις στις οποίες απευθύνεται</h4>
+<p>Η δραστηριότητα απευθύνεται σε μαθητές/τριες Γυμνασίου που διδάσκονται Γαλλικά ως δεύτερη ξένη γλώσσα. Μπορεί να αξιοποιηθεί κυρίως στη Β’ ή Γ’ Γυμνασίου, ανάλογα με το επίπεδο της τάξης και την εξοικείωση των μαθητών/τριών με βασικό λεξιλόγιο καθημερινής επικοινωνίας.</p>
+<h4>Επίπεδο γλωσσομάθειας</h4>
+<p>Α1+ σύμφωνα με την κλίμακα του ΚΕΠΑ.</p>
+<h4>Προσδοκώμενα μαθησιακά αποτελέσματα</h4>
+<p>Με την ολοκλήρωση της δραστηριότητας οι μαθητές/τριες αναμένεται:</p>
+<ul>
+<li>να κατανοούν βασικές λέξεις και φράσεις στα γαλλικά σχετικά με την ψηφιακή πολιτειότητα,</li>
+<li>να αναγνωρίζουν απλές ασφαλείς και μη ασφαλείς συμπεριφορές στο διαδίκτυο,</li>
+<li>να κατανοούν πολύ σύντομα σενάρια στα γαλλικά με τη βοήθεια εικόνων και λεξιλογίου,</li>
+<li>να απαντούν σε απλές ερωτήσεις με λέξεις-κλειδιά ή σύντομες προτάσεις,</li>
+<li>να δίνουν βασικές συμβουλές στα γαλλικά με απλές δομές,</li>
+<li>να συνεργάζονται σε μικρές ομάδες,</li>
+<li>να δημιουργούν 2–4 απλούς κανόνες ψηφιακής συμπεριφοράς στα γαλλικά,</li>
+<li>να συνδέουν τη χρήση της γαλλικής γλώσσας με πραγματικές καταστάσεις της καθημερινής ψηφιακής ζωής.</li>
+</ul>
+<h4>Βασικό λεξιλόγιο</h4>
+<p>Ο/η εκπαιδευτικός παρουσιάζει το παρακάτω λεξιλόγιο με εικόνες, παραδείγματα ή σύντομη μετάφραση: le citoyen numérique / la citoyenne numérique = ο/η ψηφιακός/ή πολίτης, être en sécurité en ligne = είμαι ασφαλής στο διαδίκτυο, les informations personnelles = προσωπικά δεδομένα, le mot de passe = ο κωδικός πρόσβασης, la vie privée = η ιδιωτικότητα, le cyberharcèlement = διαδικτυακός εκφοβισμός, les fausses informations = ψευδείς ειδήσεις, le respect = ο σεβασμός, signaler = αναφέρω, bloquer = μπλοκάρω, réfléchir avant de publier = σκέφτομαι πριν δημοσιεύσω.
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 3/Glossaire.png')">📄 Προβολή Λεξιλογίου</button></div>
+<h4>Χρήσιμες γλωσσικές δομές</h4>
+<p>Οι μαθητές/τριες μπορούν να χρησιμοποιήσουν τις παρακάτω φράσεις: C’est sûr. = Είναι ασφαλές. Ce n’est pas sûr. = Δεν είναι ασφαλές. C’est un problème. = Είναι πρόβλημα. Il/Elle doit … = Αυτός/Αυτή πρέπει να … Il/Elle ne doit pas … = Αυτός/Αυτή δεν πρέπει να … On doit … = Πρέπει να … On ne doit pas … = Δεν πρέπει να … Sois gentil/gentille en ligne. = Να είσαι ευγενικός/ή στο διαδίκτυο. Ne partage pas tes informations personnelles. = Μη μοιράζεσαι τα προσωπικά σου δεδομένα. Ne clique pas sur des liens bizarres. = Μην πατάς σε περίεργους συνδέσμους. Utilise un mot de passe fort. = Χρησιμοποίησε έναν δυνατό κωδικό. Demande d’abord. = Ρώτα πρώτα. Parle à un adulte. = Μίλησε σε έναν ενήλικο.
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 3/Phrases.png')">📄 Προβολή Φράσεων</button></div>
+<h4>Είδος δραστηριότητας</h4>
+<p>Διερευνητική δραστηριότητα, γλωσσική εξάσκηση, ομαδοσυνεργατική εργασία, συζήτηση, δημιουργία αφίσας ή σύντομου οδηγού, επίλυση προβλήματος.</p>
+<h4>Περιγραφή της δραστηριότητας</h4>
+<p>Η δραστηριότητα έχει ως στόχο την ενημέρωση και ευαισθητοποίηση των μαθητών/τριών σχετικά με την ψηφιακή πολιτειότητα και την ασφαλή χρήση του διαδικτύου μέσα από τη χρήση πολύ απλής Γαλλικής Γλώσσας. Στην αρχή, ο/η εκπαιδευτικός προβάλλει ένα απλό infographic στα γαλλικά με βασικούς κανόνες ψηφιακής πολιτειότητας. 
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 3/Infographic French.png')">📄 Προβολή Infographic</button></div><p> 
+                    Οι κανόνες είναι σύντομοι, οπτικοποιημένοι και κατάλληλοι για επίπεδο Α1+. Ενδεικτικοί κανόνες: Protège tes données. Utilise un mot de passe fort. Réfléchis avant de publier. Sois gentil/gentille en ligne. Vérifie les informations. Ne clique pas sur des liens bizarres. Demande avant de partager des photos. Parle à un adulte. Ακολουθεί σύντομη συζήτηση με απλές ερωτήσεις: Qu’est-ce que tu fais en ligne ? Tu regardes des vidéos ? Tu joues en ligne ? Tu parles avec tes amis ? Qu’est-ce qui est sûr ? Qu’est-ce qui n’est pas sûr ? Στη συνέχεια, οι μαθητές/τριες χωρίζονται σε ομάδες των 3–4 ατόμων. Κάθε ομάδα παίρνει μία κάρτα-σενάριο στα γαλλικά. Τα σενάρια είναι σύντομα και βασίζονται σε καθημερινές ψηφιακές καταστάσεις: δημοσίευση φωτογραφίας χωρίς άδεια, ύποπτος σύνδεσμος, αντιγραφή πληροφοριών χωρίς πηγή, αδύναμος κωδικός, κακό σχόλιο σε ομαδική συνομιλία. Οι μαθητές/τριες διαβάζουν το σενάριο και απαντούν σε απλές ερωτήσεις: Quel est le problème ? C’est sûr ou ce n’est pas sûr ? Que doit faire la personne ? Quelle est votre règle numérique ? Οι απαντήσεις μπορούν να είναι σύντομες, με λέξεις-κλειδιά ή απλές προτάσεις. Ο/η εκπαιδευτικός παρέχει γλωσσική υποστήριξη στον πίνακα. Στο τελικό στάδιο, κάθε ομάδα δημιουργεί 2–4 απλούς κανόνες στα γαλλικά για έναν κοινό κώδικα ψηφιακής πολιτειότητας με τίτλο: Notre code numérique de classe. Οι κανόνες μπορούν να γραφτούν σε χαρτί, σε αφίσα ή σε απλό ψηφιακό περιβάλλον, όπως Canva, Google Slides ή Padlet, εφόσον υπάρχει τεχνική δυνατότητα. Η δραστηριότητα ολοκληρώνεται με σύντομη παρουσίαση. Κάθε ομάδα διαβάζει 1–2 κανόνες στα γαλλικά. Στο τέλος, η τάξη επιλέγει τους καλύτερους κανόνες και δημιουργεί έναν κοινό μικρό οδηγό ψηφιακής πολιτειότητας.</p>
+<h4>Διάρκεια</h4>
+<p>45 λεπτά ή 2 διδακτικές ώρες.</p>
+<h4>Ενδεικτική κατανομή για μία διδακτική ώρα</h4>
+<p>5’ Εισαγωγή στο θέμα με εικόνα ή infographic<br/>10’ Παρουσίαση λεξιλογίου και χρήσιμων φράσεων<br/>10’ Ανάγνωση και κατανόηση καρτών-σεναρίων<br/>15’ Ομαδική εργασία και δημιουργία κανόνων<br/>5’ Παρουσίαση και αναστοχασμός</p>
+<h4>Οργάνωση τάξης</h4>
+<p>Οι μαθητές/τριες εργάζονται σε ομάδες των 3–4 ατόμων. Ο/η εκπαιδευτικός: παρουσιάζει το βασικό λεξιλόγιο, εξηγεί τις οδηγίες, υποστηρίζει τις ομάδες γλωσσικά, δίνει έτοιμες φράσεις, βοηθά στη διατύπωση απλών γαλλικών προτάσεων, ενθαρρύνει όλους τους μαθητές να συμμετάσχουν. Οι μαθητές/τριες: διαβάζουν το σενάριο, εντοπίζουν το πρόβλημα, αποφασίζουν αν η συμπεριφορά είναι ασφαλής ή μη ασφαλής, προτείνουν μια απλή λύση, γράφουν απλούς κανόνες, παρουσιάζουν σύντομα την ιδέα τους.</p>
+<h4>Ψηφιακό εκπαιδευτικό περιεχόμενο, εργαλεία, πηγές</h4>
+<p>Μπορούν να αξιοποιηθούν: απλό infographic στα γαλλικά με κανόνες ψηφιακής πολιτειότητας, κάρτες-σενάρια στα γαλλικά, φύλλο εργασίας στα γαλλικά, γλωσσάρι με εικόνες, infographic με χρήσιμες φράσεις, Canva ή Google Slides για δημιουργία αφίσας, Padlet ή ψηφιακός πίνακας για συλλογή κανόνων, προβολέας ή διαδραστικός πίνακας, υλικό από φορείς ασφαλούς διαδικτύου, προσαρμοσμένο γλωσσικά από τον/την εκπαιδευτικό.
+                    </p><div class="resource-buttons"><button class="img-button" onclick="openImageModal('files 3/Fiche de travail.png')">📄 Προβολή Φύλλου Εργασίας</button></div>
+<h4>Οδηγίες προς τους μαθητές</h4>
+<p>Je suis un bon citoyen numérique ! Travaillez en groupes. Lisez votre carte-situation. Parlez ensemble et répondez aux questions. Quel est le problème ? C’est sûr ou ce n’est pas sûr ? Que doit faire la personne ? Quelle est votre règle numérique ? Utilisez ces phrases: C’est sûr. Ce n’est pas sûr. C’est un problème. Il/Elle doit … Il/Elle ne doit pas … On doit … On ne doit pas … Sois gentil/gentille en ligne. Parle à un adulte. Écrivez ensuite 2–4 règles pour les citoyens numériques. Titre: Notre code numérique de classe Exemples: Protège tes données. Utilise un mot de passe fort. Sois gentil/gentille en ligne. Ne clique pas sur des liens bizarres. Vérifie les informations. Demande avant de partager des photos. Parle à un adulte.</p>
+<h4>Ενδεικτικές κάρτες-σενάρια στα γαλλικά</h4>
+<div class="scenario-card">
+<strong>Scénario 1 : La photo</strong><br/>
+                        Maria prend une photo drôle de son amie. Elle poste la photo dans le chat de la classe. Son amie est triste et fâchée.<br/>
+<em>Questions :</em> Quel est le problème ? Que doit faire Maria ? Quelle est votre règle numérique ?<br/>
+<button class="img-button" onclick="openImageModal('files 3/1_2.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scénario 2 : Le lien bizarre</strong><br/>
+                        Nick reçoit un message : « Clique ici ! Tu gagnes un nouveau téléphone ! » Il ne connaît pas la personne.<br/>
+<em>Questions :</em> Le message est-il sûr ? Que doit faire Nick ? Quelle est votre règle numérique ?<br/>
+<button class="img-button" onclick="openImageModal('files 3/2_2.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scénario 3 : Le projet scolaire</strong><br/>
+                        Eleni trouve des informations pour un projet scolaire sur un site web. Elle copie tout. Elle n’écrit pas la source.<br/>
+<em>Questions :</em> Quel est le problème ? Que doit faire Eleni ? Quelle est votre règle numérique ?<br/>
+<button class="img-button" onclick="openImageModal('files 3/3_2.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scénario 4 : Le mot de passe</strong><br/>
+                        Kostas utilise le mot de passe « 123456 » pour son e-mail, ses jeux et les réseaux sociaux.<br/>
+<em>Questions :</em> Est-ce un mot de passe fort ? Que doit faire Kostas ? Quelle est votre règle numérique ?<br/>
+<button class="img-button" onclick="openImageModal('files 3/4_2.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<div class="scenario-card">
+<strong>Scénario 5 : Le commentaire méchant</strong><br/>
+                        Un élève écrit un commentaire méchant sur un camarade dans un groupe en ligne.<br/>
+<em>Questions :</em> Est-ce du cyberharcèlement ? Que doivent faire les autres élèves ? Quelle est votre règle numérique ?<br/>
+<button class="img-button" onclick="openImageModal('files 3/5_2.png')">🖼️ Προβολή Κάρτας</button>
+</div>
+<h4>Τεκμηρίωση της δραστηριότητας</h4>
+<p>Η δραστηριότητα επιλέχθηκε επειδή η ψηφιακή πολιτειότητα συνδέεται άμεσα με την καθημερινότητα των μαθητών/τριών. Οι μαθητές χρησιμοποιούν το διαδίκτυο για επικοινωνία, παιχνίδι, αναζήτηση πληροφοριών και σχολικές εργασίες. Επομένως, το μάθημα της Γαλλικής Γλώσσας μπορεί να αξιοποιήσει ένα πραγματικό και χρήσιμο θέμα, το οποίο ενισχύει τόσο τη γλωσσική μάθηση όσο και την υπεύθυνη ψηφιακή συμπεριφορά. Η προσαρμογή στο επίπεδο Α1+ επιτυγχάνεται με: σύντομα κείμενα, απλό λεξιλόγιο, επανάληψη βασικών δομών, χρήση εικόνων, γλωσσικά στηρίγματα, ερωτήσεις κλειστού ή ημι-ανοιχτού τύπου, περιορισμένη και καθοδηγούμενη παραγωγή λόγου. Οι κάρτες-σενάρια βοηθούν τους μαθητές να κατανοήσουν την έννοια της ψηφιακής πολιτειότητας μέσα από πρακτικά παραδείγματα. Αντί να απομνημονεύουν γενικούς κανόνες, καλούνται να εντοπίσουν ένα πρόβλημα, να αποφασίσουν αν μια συμπεριφορά είναι ασφαλής ή όχι και να διατυπώσουν μια απλή συμβουλή στα γαλλικά. Η δραστηριότητα συνδυάζει γλωσσικούς και παιδαγωγικούς στόχους. Οι μαθητές εξασκούνται στην κατανόηση γραπτού λόγου, στην παραγωγή σύντομων προτάσεων, στη συνεργασία και στην προφορική παρουσίαση. Παράλληλα, καλλιεργούν δεξιότητες ψηφιακού γραμματισμού, υπευθυνότητας και σεβασμού στον διαδικτυακό χώρο. Η χρήση ψηφιακών εργαλείων, όπως Canva, Google Slides ή Padlet, προσθέτει αξία, καθώς οι μαθητές δημιουργούν ένα αυθεντικό προϊόν στη γλώσσα-στόχο. Ωστόσο, η δραστηριότητα μπορεί να υλοποιηθεί και χωρίς ψηφιακά μέσα, με έντυπες κάρτες και χειρόγραφες αφίσες.</p>
+<h4>Πρόσθετα στοιχεία</h4>
+<p>Για μαθητές που δυσκολεύονται περισσότερο, μπορούν να δοθούν ημιτελείς προτάσεις: On doit … On ne doit pas … Il doit … Elle doit … C’est sûr. Ce n’est pas sûr. C’est un problème. Για πιο άνετους μαθητές, μπορεί να ζητηθεί σύντομη προφορική παρουσίαση: Notre règle est : … Elle est importante parce que … Η δραστηριότητα μπορεί επίσης να επεκταθεί με: δημιουργία γαλλόγλωσσης αφίσας για την τάξη, σύντομο role-play, quiz λεξιλογίου, δημιουργία κοινού ψηφιακού οδηγού με τίτλο « En ligne en sécurité – notre guide de classe », σύνδεση με την Ημέρα Ασφαλούς Διαδικτύου.</p>
+<h4>Ενδεικτική αξιολόγηση</h4>
+<p>Η αξιολόγηση μπορεί να γίνει με βάση: τη συμμετοχή στην ομάδα, την κατανόηση του σεναρίου, τη σωστή χρήση βασικού λεξιλογίου, τη διατύπωση απλής συμβουλής, τη δημιουργία ενός κατανοητού κανόνα στα γαλλικά, την προφορική παρουσίαση της ομάδας. Δεν δίνεται έμφαση στη γραμματική τελειότητα, αλλά στην επικοινωνιακή αποτελεσματικότητα, στην κατανόηση του προβλήματος και στη χρήση της Γαλλικής Γλώσσας για έναν πραγματικό σκοπό.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Το Αναδυόμενο Παράθυρο (Modal) για τις Εικόνες -->
+<div class="modal" id="imageModal">
+<span class="close" onclick="closeImageModal()">×</span>
+<img class="modal-content" id="modalImage"/>
+</div>
+<footer>
+        Παναγιώτης Δόμβρος, Εκπαιδευτικός Αγγλικής &amp; Θεατρολόγος, Επιμορφωτής Τ.Π.Ε, Διευθυντής 1ου Γυμνασίου Πυλαίας
+    </footer>
+</div>
+<script>
+        // Λειτουργία Εναλλαγής Tabs
+        function openTab(evt, langName) {
+            const tabcontent = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            const tabbuttons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            
+            document.getElementById(langName).style.display = "block";
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Λειτουργία Εμφάνισης Modal Image
+        function openImageModal(imgSrc) {
+            document.getElementById("imageModal").style.display = "block";
+            document.getElementById("modalImage").src = imgSrc;
+        }
+
+        // Λειτουργία Κλεισίματος Modal Image
+        function closeImageModal() {
+            document.getElementById("imageModal").style.display = "none";
+            document.getElementById("modalImage").src = "";
+        }
+
+        // Κλείσιμο του modal όταν ο χρήστης κάνει κλικ έξω από την εικόνα ή πατήσει Escape
+        window.addEventListener("click", function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target === modal) {
+                closeImageModal();
+            }
+        });
+
+        window.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>
